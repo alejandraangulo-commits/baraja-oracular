@@ -4,11 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Baraja Oracular Sociedad y Ambiente</title>
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Cinzel & Inter -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -54,7 +51,6 @@
             font-family: 'Cinzel', serif;
         }
 
-        /* Mechanics for 3D Card Flip */
         .card-container {
             perspective: 1200px;
         }
@@ -89,7 +85,6 @@
             z-index: 1;
         }
 
-        /* Custom Scrollbar for Card Back */
         .custom-scroll::-webkit-scrollbar {
             width: 5px;
         }
@@ -102,12 +97,10 @@
             border-radius: 4px;
         }
 
-        /* Gold Foil Glow Effect */
         .gold-border-glow {
             box-shadow: 0 0 20px rgba(212, 175, 55, 0.25), inset 0 0 12px rgba(212, 175, 55, 0.15);
         }
 
-        /* Light Mode Styles for Academic Print Presentation */
         body.light-mode {
             background-color: #f8fafc;
             color: #1e1b18;
@@ -154,7 +147,6 @@
 </head>
 <body class="min-h-screen flex flex-col">
 
-    <!-- TOP NAVIGATION HEADER -->
     <header class="border-b border-gold-500/30 bg-magenta-900/95 backdrop-blur-md sticky top-0 z-50 px-4 py-3">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
             <div class="flex items-center space-x-3">
@@ -169,7 +161,6 @@
                 </div>
             </div>
 
-            <!-- View Switcher & Action Controls -->
             <div class="flex items-center space-x-2 bg-magenta-800/90 p-1 rounded-xl border border-gold-500/40">
                 <button id="tab-deck" onclick="switchTab('deck')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 bg-gold-500 text-magenta-950 font-bold shadow">
                     <i class="fa-solid fa-layer-group mr-1.5"></i> Explorar Baraja
@@ -185,10 +176,8 @@
         </div>
     </header>
 
-    <!-- MAIN CONTAINER -->
     <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 flex flex-col">
 
-        <!-- OFFICIAL TEAM MEMBERS BANNER -->
         <div class="team-box bg-magenta-800/80 border border-gold-500/50 rounded-2xl p-4 sm:p-5 mb-6 backdrop-blur-sm shadow-xl">
             <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
                 <div>
@@ -204,7 +193,6 @@
                     </p>
                 </div>
                 
-                <!-- Authors List -->
                 <div class="bg-magenta-950/90 border border-gold-500/40 rounded-xl p-3 w-full lg:w-auto min-w-[320px] shadow-inner">
                     <div class="flex items-center justify-between border-b border-gold-500/30 pb-1.5 mb-2">
                         <span class="text-[11px] font-bold uppercase text-gold-400 font-cinzel flex items-center gap-1.5">
@@ -223,19 +211,15 @@
             </div>
         </div>
 
-        <!-- VIEW 1: DECK EXPLORER -->
         <section id="view-deck" class="block space-y-6">
             <div class="text-center max-w-2xl mx-auto mb-2">
                 <p class="text-xs font-semibold text-gold-400 uppercase tracking-widest font-cinzel"><i class="fa-solid fa-hand-pointer mr-1"></i> Toca o haz clic en cualquier carta para girarla</p>
             </div>
 
-            <!-- Cards Grid (4 Cards with Local Images) -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                 
-                <!-- CARD 1: THE TREE (El Ciprés) -->
                 <div class="card-container h-[650px] w-full">
                     <div id="flipper-tree" class="card-flipper w-full h-full cursor-pointer" onclick="toggleCardFlip('flipper-tree')">
-                        <!-- ANVERSO (Real Image arbol.jpg) -->
                         <div class="card-front bg-magenta-800 border-2 border-gold-500/80 rounded-2xl p-4 flex flex-col justify-between gold-border-glow shadow-2xl overflow-hidden relative">
                             <div class="flex justify-between items-center z-10">
                                 <span class="font-cinzel text-xs font-bold px-2.5 py-0.5 border border-gold-500 rounded text-gold-400 bg-magenta-950">I</span>
@@ -262,7 +246,6 @@
                             </div>
                         </div>
 
-                        <!-- REVERSO -->
                         <div class="card-back card-back-bg bg-magenta-900 border-2 border-gold-500/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-between custom-scroll overflow-y-auto text-gold-300">
                             <div>
                                 <div class="flex justify-between items-center border-b border-gold-500/30 pb-2 mb-2.5">
@@ -276,7 +259,7 @@
                                             <i class="fa-solid fa-tree text-gold-500"></i> 1. ¿Quién es este maestro?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Ubicado en medio de una terraza en las vertientes o laderas ramificadas occidentales de la cordillera central de los Andes, es un gigante de unos 25 metros de altura que, con su enorme e imponente tronco, da solidez por su rectitud, cilíndrico y robusto. Está en su madurez y su corteza de color marrón se fisura con el pasar de los años. Según la leyenda tiene más de 110 años. Produce pequeños conos esféricos leñosos de 1 a 2 cm de diámetro, que al madurar liberan semillas aladas. Es el guardián del predio. Relata la leyenda que es el castillo de los nomos de San Félix y es la casa de muchas bifloras; conversa con sus amigos los pájaros colibríes, cucaracheros, mirlas, barranquero, carriquí copete azul y en las noches dialoga de los sueños de los habitantes de la vereda con el currucutú chobila, al cual vio nacer.
+                                            Ubicado en medio de una terraza en las vertientes occidentales de la cordillera central de los Andes, es un gigante de unos 25 metros de altura que, con su enorme e imponente tronco, da solidez por su rectitud, cilíndrico y robusto. Está en su madurez y su corteza de color marrón se fisura con el pasar de los años. Según la leyenda tiene más de 110 años. Produce pequeños conos esféricos leñosos de 1 a 2 cm de diámetro. Es el guardián del predio. Relata la leyenda que es el castillo de los nomos de San Félix y la casa de muchas bifloras; conversa con pájaros colibríes, cucaracheros, mirlas, barranqueros y en las noches dialoga sobre los sueños de la vereda con el currucutú chobila.
                                         </p>
                                     </div>
 
@@ -285,7 +268,7 @@
                                             <i class="fa-solid fa-cloud-showers-water text-gold-500"></i> 2. ¿Qué hace que normalmente no vemos?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            A través de sus diminutas hojas escamosas, actúan como un atrapanieblas biológico que "cosecha" agua de la bruma andina y regula la humedad de la ladera. Sin embargo, como especie exótica introducida (*Cupressus lusitanica*), sus acículas caídas acidifican el suelo e inhiben el crecimiento del sotobosque nativo, demostrando la tensión entre su refugio afectivo y su impacto en la química del suelo.
+                                            A través de sus diminutas hojas escamosas, actúa como un atrapanieblas biológico que "cosecha" agua de la bruma andina y regula la humedad de la ladera. Sin embargo, sus acículas caídas acidifican el suelo e inhiben el crecimiento del sotobosque nativo, demostrando la tensión entre su refugio afectivo y su impacto en la química del suelo.
                                         </p>
                                     </div>
 
@@ -303,7 +286,7 @@
                                             <i class="fa-solid fa-brain text-gold-500"></i> 4. ¿Qué nos enseña?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            El viejo ciprés no lucha contra la bruma; comprende que la niebla no es pérdida de visión, sino un manto de protección y tiempo de introyección. Tus raíces sostienen tu corona: en la incertidumbre, confía en lo construido en lo profundo. Invita a hacer una pausa para escuchar los sonidos del silencio y a conectar tus 3 mundos: la raíz (lo oculto o inconsciente), el tronco (lo visible o cuerpo físico) y la frondosa copa (el espíritu). Su resina espiritual mantiene tu esencia intacta sin importar lo frío o nebuloso del entorno.
+                                            El viejo ciprés no lucha contra la bruma; comprende que la niebla no es pérdida de visión, sino un manto de protección e introyección. Invita a conectar tus 3 mundos: la raíz (inconsciente), el tronco (cuerpo físico) y la copa (espíritu).
                                         </p>
                                     </div>
                                 </div>
@@ -319,10 +302,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 2: THE MUSHROOM (hongo.jpg) -->
                 <div class="card-container h-[650px] w-full">
                     <div id="flipper-mushroom" class="card-flipper w-full h-full cursor-pointer" onclick="toggleCardFlip('flipper-mushroom')">
-                        <!-- ANVERSO -->
                         <div class="card-front bg-magenta-800 border-2 border-gold-500/80 rounded-2xl p-4 flex flex-col justify-between gold-border-glow shadow-2xl overflow-hidden relative">
                             <div class="flex justify-between items-center z-10">
                                 <span class="font-cinzel text-xs font-bold px-2.5 py-0.5 border border-gold-500 rounded text-gold-400 bg-magenta-950">II</span>
@@ -349,7 +330,6 @@
                             </div>
                         </div>
 
-                        <!-- REVERSO -->
                         <div class="card-back card-back-bg bg-magenta-900 border-2 border-gold-500/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-between custom-scroll overflow-y-auto text-gold-300">
                             <div>
                                 <div class="flex justify-between items-center border-b border-gold-500/30 pb-2 mb-2.5">
@@ -363,7 +343,7 @@
                                             <i class="fa-solid fa-disease text-gold-500"></i> 1. ¿Quién es este maestro?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Silencioso y fértil, habita la húmeda hojarasca de los robledales andinos (*Quercus humboldtii*) en San Félix. Lo que emerge en la superficie como una pequeña seta leñosa o sombrerillo de tonos pardos es tan solo el fruto efímero de un ser infinitamente más vasto que se extiende bajo la tierra húmeda del bosque montano.
+                                            Silencioso y fértil, habita la húmeda hojarasca de los robledales andinos en San Félix. Lo que emerge en la superficie como una pequeña seta es tan solo el fruto efímero de un ser infinitamente más vasto que se extiende bajo la tierra húmeda del bosque montano.
                                         </p>
                                     </div>
 
@@ -372,7 +352,7 @@
                                             <i class="fa-solid fa-network-wired text-gold-500"></i> 2. ¿Qué hace que normalmente no vemos?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Teje la red micorrízica subterránea (*Wood Wide Web*), una intrincada malla de filamentos de hifas blancas que abraza las raíces de los robles. Transfiere agua, fósforo y nitrógeno entre árboles ancianos y plántulas jóvenes, funcionando como una red comunitaria de redistribución de recursos y alquimia de reciclaje orgánico.
+                                            Teje la red micorrízica subterránea, una red de filamentos que abraza las raíces de los robles. Transfiere agua y nutrientes entre árboles ancianos y plántulas jóvenes, funcionando como una red comunitaria de redistribución de recursos.
                                         </p>
                                     </div>
 
@@ -390,7 +370,7 @@
                                             <i class="fa-solid fa-hands-holding-circle text-gold-500"></i> 4. ¿Qué nos enseña?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Ninguna estructura sobrevive sola. La verdadera fortaleza de un ecosistema no reside en la jerarquía del dosel o la masa visible, sino en la densidad y reciprocidad de sus alianzas subterráneas e invisibles. Nos enseña la lección de la cooperación silenciosa frente al individualismo.
+                                            Ninguna estructura sobrevive sola. La verdadera fortaleza de un ecosistema reside en la densidad y reciprocidad de sus alianzas subterráneas e invisibles. Nos enseña la lección de la cooperación silenciosa frente al individualismo.
                                         </p>
                                     </div>
                                 </div>
@@ -406,10 +386,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 3: THE ANIMAL (animal.jpg) -->
                 <div class="card-container h-[650px] w-full">
                     <div id="flipper-animal" class="card-flipper w-full h-full cursor-pointer" onclick="toggleCardFlip('flipper-animal')">
-                        <!-- ANVERSO -->
                         <div class="card-front bg-magenta-800 border-2 border-gold-500/80 rounded-2xl p-4 flex flex-col justify-between gold-border-glow shadow-2xl overflow-hidden relative">
                             <div class="flex justify-between items-center z-10">
                                 <span class="font-cinzel text-xs font-bold px-2.5 py-0.5 border border-gold-500 rounded text-gold-400 bg-magenta-950">III</span>
@@ -436,7 +414,6 @@
                             </div>
                         </div>
 
-                        <!-- REVERSO -->
                         <div class="card-back card-back-bg bg-magenta-900 border-2 border-gold-500/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-between custom-scroll overflow-y-auto text-gold-300">
                             <div>
                                 <div class="flex justify-between items-center border-b border-gold-500/30 pb-2 mb-2.5">
@@ -450,7 +427,7 @@
                                             <i class="fa-solid fa-dove text-gold-500"></i> 1. ¿Quién es este maestro?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Es el Barranquero (*Momotus aequatorialis*), también conocido como Soledad o Relojero. Ave majestuosa de los bosques andinos del Valle de Aburrá y San Félix. Luciendo su inconfundible diadema de un azul turquesa vibrante y su característica cola larga terminada en raquetas que péndula serenamente, es el centinela multicolor de los barrancos y quebradas.
+                                            Es el Barranquero (*Momotus aequatorialis*), conocido como Soledad o Relojero. Ave majestuosa de los bosques andinos del Valle de Aburrá y San Félix. Con su diadema azul turquesa vibrante y su cola terminada en raquetas, es el centinela multicolor de los barrancos.
                                         </p>
                                     </div>
 
@@ -459,7 +436,7 @@
                                             <i class="fa-solid fa-route text-gold-500"></i> 2. ¿Qué hace que normalmente no vemos?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Juega un rol vital en la dispersión de semillas nativas y en la arquitectura del suelo, al excavar profundas galerías en barrancos de tierra para anidar. Asimismo, adapta sus trayectorias posándose sobre cables de alta tensión y postes, reconfigurando sus mapas de vuelo en medio del avance de las infraestructuras humanas.
+                                            Dispersa semillas nativas y moldea el suelo al excavar galerías en barrancos de tierra para anidar. Adapta sus trayectorias posándose sobre cables de alta tensión, reconfigurando sus mapas de vuelo ante las infraestructuras humanas.
                                         </p>
                                     </div>
 
@@ -477,7 +454,7 @@
                                             <i class="fa-solid fa-shield-cat text-gold-500"></i> 4. ¿Qué nos enseña?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Nos enseña sobre la solitud contemplativa y la resiliencia territorial. Su canto y presencia constante entre los cables y la bruma nos recuerdan que los proyectos de infraestructura no ocurren en un espacio vacío, sino sobre autopistas de vuelo y vida que deben ser respetadas e integradas.
+                                            Nos enseña sobre la solitud contemplativa y la resiliencia territorial. Su canto entre los cables nos recuerda que los proyectos no ocurren en un espacio vacío, sino sobre autopistas de vida que deben ser respetadas.
                                         </p>
                                     </div>
                                 </div>
@@ -493,10 +470,8 @@
                     </div>
                 </div>
 
-                <!-- CARD 4: THE MYSTIC (mistica.jpg) -->
                 <div class="card-container h-[650px] w-full">
                     <div id="flipper-mystic" class="card-flipper w-full h-full cursor-pointer" onclick="toggleCardFlip('flipper-mystic')">
-                        <!-- ANVERSO -->
                         <div class="card-front bg-magenta-800 border-2 border-gold-500/80 rounded-2xl p-4 flex flex-col justify-between gold-border-glow shadow-2xl overflow-hidden relative">
                             <div class="flex justify-between items-center z-10">
                                 <span class="font-cinzel text-xs font-bold px-2.5 py-0.5 border border-gold-500 rounded text-gold-400 bg-magenta-950">IV</span>
@@ -523,7 +498,6 @@
                             </div>
                         </div>
 
-                        <!-- REVERSO -->
                         <div class="card-back card-back-bg bg-magenta-900 border-2 border-gold-500/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-between custom-scroll overflow-y-auto text-gold-300">
                             <div>
                                 <div class="flex justify-between items-center border-b border-gold-500/30 pb-2 mb-2.5">
@@ -537,7 +511,7 @@
                                             <i class="fa-solid fa-cat text-gold-500"></i> 1. ¿Quién es este maestro?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Lili es una gata doméstica, una felina que habita el borde de la ventana y el umbral del hogar. Su presencia cotidiana trasciende lo estrictamente biológico: representa un vínculo profundo y afectivo que nos conecta tanto con la serenidad de la vida doméstica como con la fuerza pulsante del mundo natural y salvaje. Los felinos han encarnado históricamente el misterio, la autonomía y la percepción; Lili es un ser que nos recuerda diariamente que existe un lenguaje de mirada y silencio que también forma parte del entramado vivo del entorno.
+                                            Lili es una gata doméstica que habita el borde de la ventana y el umbral del hogar. Representa un vínculo profundo y afectivo que nos conecta con la serenidad de la vida doméstica y la fuerza pulsante del mundo natural.
                                         </p>
                                     </div>
 
@@ -546,7 +520,7 @@
                                             <i class="fa-solid fa-wand-magic-sparkles text-gold-500"></i> 2. ¿Qué hace que normalmente no vemos?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Suele pasarse por alto que el territorio no está constituido únicamente por elementos físicos o métricas cuantificables, sino por relaciones intangibles, significados simbólicos, mitos, saberes culturales y afectos. Mientras la mirada técnica evalúa metros cuadrados y flujos materiales, seres como Lili habitan el espacio desde una sensibilidad no humana, detectando sutilezas del viento, sombras y vibraciones invisibles. Nos devela que existe una dimensión mística y ancestral en la convivencia diaria con la naturaleza que la razón instrumental suele dejar fuera del mapa.
+                                            Habita el espacio desde una sensibilidad no humana, detectando sutilezas del viento y vibraciones invisibles. Devela que existe una dimensión mística y ancestral en la convivencia diaria que la razón instrumental suele dejar fuera del mapa.
                                         </p>
                                     </div>
 
@@ -555,7 +529,7 @@
                                             <i class="fa-solid fa-eye text-gold-500"></i> 3. Concepto del Curso
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            <strong class="text-gold-400">Ontología Plural y Cartografía Afectiva:</strong> Cuestiona el sesgo antropocéntrico que reduce el territorio a un simple objeto de intervención o cálculo ingenieril. Nos permite entender que las geografías también son afectivas y simbólicas, donde lo "místico" y lo cultural no son opuestos a la ciencia, sino dimensiones complejas que enriquecen y dotan de sentido al habitar.
+                                            <strong class="text-gold-400">Ontología Plural y Cartografía Afectiva:</strong> Cuestiona el sesgo antropocéntrico que reduce el territorio a un simple objeto de intervención o cálculo. Entiende que las geografías también son afectivas y simbólicas.
                                         </p>
                                     </div>
 
@@ -564,7 +538,7 @@
                                             <i class="fa-solid fa-heart text-gold-500"></i> 4. ¿Qué nos enseña?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Lili nos enseña a valorar lo intangible y a cultivar la intuición frente a la rigidez técnica. Nos demuestra que el territorio es también refugio, misterio y relación. Incluir la carta de La Mística a través de un ser tan especial como un felino es una invitación a desplazar la mirada meramente funcional para reconocer que la conservación y el diseño del espacio deben fundamentarse también en el respeto, el afecto y la fascinación por la vida en todas sus manifestaciones.
+                                            Lili nos enseña a valorar lo intangible y a cultivar la intuición frente a la rigidez técnica. Demuestra que el territorio es también refugio, misterio y relación.
                                         </p>
                                     </div>
                                 </div>
@@ -583,7 +557,6 @@
             </div>
         </section>
 
-        <!-- VIEW 2: ORACLE SIMULATOR -->
         <section id="view-oracle" class="hidden space-y-6">
             <div class="oracle-box bg-magenta-800/90 border border-gold-500/50 rounded-2xl p-6 max-w-4xl mx-auto shadow-2xl backdrop-blur-md">
                 <div class="text-center mb-6">
@@ -594,7 +567,6 @@
                     </p>
                 </div>
 
-                <!-- Dilemma Form -->
                 <div class="space-y-4">
                     <div>
                         <label class="block text-xs font-bold text-gold-400 uppercase tracking-wider mb-2 font-cinzel">
@@ -602,7 +574,6 @@
                         </label>
                         <textarea id="dilemma-input" rows="3" class="w-full bg-magenta-950/90 border border-gold-500/50 rounded-xl p-3.5 text-sm text-gold-300 placeholder-gold-500/40 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition" placeholder="Ejemplo: Se propone la instalación y cobro de un peaje en la vía a San Félix..."></textarea>
                         
-                        <!-- Quick Presets -->
                         <div class="flex flex-wrap gap-2 mt-2">
                             <span class="text-[11px] text-gold-400/80 self-center font-semibold">Ejemplos de clase:</span>
                             <button onclick="setPreset('peaje')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
@@ -617,7 +588,6 @@
                         </div>
                     </div>
 
-                    <!-- Draw Options -->
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
                         <div>
                             <label class="block text-xs font-bold text-gold-400 uppercase tracking-wider mb-2 font-cinzel">
@@ -639,15 +609,11 @@
                 </div>
             </div>
 
-            <!-- Reading Results Display -->
             <div id="oracle-results" class="hidden max-w-5xl mx-auto space-y-6 pt-2">
                 
-                <!-- Drawn Cards Grid -->
                 <div id="drawn-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                    <!-- Dynamic cards inserted here -->
                 </div>
 
-                <!-- Integrated Oracular Response Panel -->
                 <div class="bg-magenta-900/95 border-2 border-gold-500/80 rounded-2xl p-6 shadow-2xl relative gold-border-glow">
                     <div class="flex items-center justify-between border-b border-gold-500/30 pb-3 mb-4">
                         <div class="flex items-center space-x-3">
@@ -666,7 +632,6 @@
                     </div>
 
                     <div id="oracle-text-output" class="text-sm text-gold-300 leading-relaxed space-y-4 font-serif">
-                        <!-- Dynamic generated text -->
                     </div>
                 </div>
             </div>
@@ -674,15 +639,12 @@
 
     </main>
 
-    <!-- FOOTER -->
     <footer class="border-t border-gold-500/20 bg-magenta-950/90 py-4 px-4 text-center text-xs text-gold-400/80 mt-auto">
         <p class="font-cinzel font-semibold">Baraja Oracular Sociedad y Ambiente — Dispositivo Pedagógico Transdisciplinar</p>
         <p class="text-[10px] text-gold-300/60 mt-0.5">Universidad de Antioquia — Escuela Ambiental — Asignatura: Sociedad y Ambiente | Prof. Cathy Vieira</p>
     </footer>
 
-    <!-- JAVASCRIPT APPLICATION LOGIC -->
     <script>
-        // Full Academic Database of Cards
         const DECK_DATA = {
             tree: {
                 id: 'tree',
@@ -726,43 +688,50 @@
             }
         };
 
-        // ENRICHED AND ELABORATED DILEMMA SYNTHESIS DATABASE
-        const DILEMMA_SYNTHESIS = {
+        const DETAILED_PREDICTIONS = {
             peaje: {
                 title: "Dilema de Peaje y Cobro en la Vía a San Félix",
-                tree: "<strong>Dictamen Oracular:</strong> <em>La frontera vertical intercepta el tiempo.</em><br><br><strong>Análisis Territorial:</strong> La imposición de una caseta de peaje sobre la ladera de San Félix constituye una barrera física y económica que fragmenta la continuidad histórica de la montaña. El Viejo Ciprés, con sus 110 años de memoria raíz y sus 25 metros de envergadura, observa cómo el flujo natural de los habitantes y la niebla se interrumpe por una lógica extractiva. Este proyecto ignora que la vía no es un mero corredor de asfalto para el capital vehicular, sino un vector de interacción comunitaria. La presencia de este maestro vegetal advierte sobre la acidificación del tejido social: así como sus acículas transforman la química del suelo, el peaje altera la economía campesina y encarece la soberanía alimentaria de la ladera.",
-                mushroom: "<strong>Dictamen Oracular:</strong> <em>El peaje pretende cobrar el suelo, pero desconoce las redes que lo sostienen.</em><br><br><strong>Análisis Territorial:</strong> Desde el micelio subterráneo, la noción de peaje resulta una ficción simplista. Mientras la ingeniería económica segmenta el territorio en peajes de pago y tarifas de paso, la Ectomicorriza opera bajo una ontología de reciprocidad absoluta, distribuyendo nitrógeno, carbono y fósforo entre los robles antiguos (Quercus humboldtii) sin imponer peajes metabólicos. La construcción de la infraestructura física compacta el suelo hídrico, rompiendo los hilos miceliales que previenen la erosión de la ladera. El Hongo exige reconocer los valores intangibles del subsuelo: el peaje arriba no solo detiene a los campesinos, sino que la obra civil destruye la comunicación invisible que evita el colapso geológico del borde de la ladera.",
-                animal: "<strong>Dictamen Oracular:</strong> <em>El peaje encierra al caminante, pero la sombra de la raqueta cruza sin permiso.</em><br><br><strong>Análisis Territorial:</strong> El Barranquero, habitante de los estratos medios y bordes de camino, evidencia el absurdo de la territorialidad delimitada por tarifas. La infraestructura del peaje fragmenta el corredor biológico altitudinal entre el Valle de Aburrá y el altiplano de San Félix, introduciendo contaminación auditiva, luminosa y colisiones vehiculares que desplazan la avifauna. Su presencia recuerda que el territorio es un espacio de movilidad multiespecie. Al imponer barreras tarifarias a los humanos, se desencadena una expansión urbana no planificada hacia las laderas altas, destruyendo los barrancos de tierra donde esta ave anida. La corona turquesa del Barranquero encarna el valor estético e intangible que ningún peaje puede cuantificar ni reparar.",
-                mystic: "<strong>Dictamen Oracular:</strong> <em>El peaje pretende tasar el territorio, pero lo invisible no paga tributo.</em><br><br><strong>Análisis Territorial:</strong> Lili, vigilante de las fronteras invisibles entre lo doméstico y lo salvaje, cuestiona la arrogancia positivista de reducir el territorio a un cálculo de peaje y flujo de vehículos por hora. El peaje representa la cuantificación extrema de la ladera, convirtiendo el derecho a la libre circulación en un bien de consumo. La Gata Mística conecta la investigación técnica con los saberes ancestrales y afectivos: el territorio se habita a través del apego, la intuición, los mitos de la montaña y la calma del descanso campesino. El peaje irrumpe como un ruido disonante que destruye la intangibilidad de la vida cotidiana. Lo que no se puede calcular en una planilla de caja es precisamente lo que le da sentido a la permanencia en San Félix.",
-                pedagogic: "<strong>Síntesis Pedagógica y Crítica de la Baraja Completa:</strong><br>La articulación de los cuatro maestros devela la falla del modelo de ingeniería civil tradicional. La Vía a San Félix y su peaje son el síntoma de una planeación territorial hidrofóbica, antropocéntrica y meramente fiscal. La instalación de un peaje sin consulta previa, popular y multiespecie es un acto de violencia territorial. La baraja exige priorizar la cartografía afectiva, suspender la mercantilización de la montaña y reconocer que San Félix es un santuario de agua, vida silvestre, micelio y memoria ancestral."
+                tree: "La imposición de una caseta de peaje sobre la ladera de San Félix constituye una barrera física y económica que fragmenta la continuidad histórica de la montaña. El Viejo Ciprés observa cómo el flujo natural de los habitantes y la niebla se interrumpe por una lógica extractiva. Este proyecto ignora que la vía es un vector de interacción comunitaria. Su presencia advierte sobre la acidificación del tejido social: así como sus acículas transforman la química del suelo, el peaje altera la economía campesina y encarece la soberanía alimentaria.",
+                mushroom: "Desde el micelio subterráneo, la noción de peaje resulta una ficción simplista. Mientras la ingeniería económica segmenta el territorio en peajes de pago, la Ectomicorriza opera bajo una ontología de reciprocidad absoluta, distribuyendo nitrógeno, carbono y fósforo entre los robles antiguos sin imponer peajes metabólicos. La obra civil compacta el suelo hídrico, rompiendo los hilos miceliales que previenen la erosión de la ladera.",
+                animal: "El Barranquero evidencia el absurdo de la territorialidad delimitada por tarifas. La infraestructura del peaje fragmenta el corredor biológico altitudinal entre el Valle de Aburrá y el altiplano de San Félix, introduciendo contaminación auditiva, luminosa y colisiones vehiculares. Al imponer barreras a los humanos, se desencadena una expansión urbana no planificada hacia las laderas altas, destruyendo los barrancos de tierra donde esta ave anida.",
+                mystic: "Lili cuestiona la arrogancia positivista de reducir el territorio a un cálculo de peaje y flujo vehicular. El peaje representa la cuantificación extrema de la ladera, convirtiendo el derecho a la libre circulación en un bien de consumo. La Gata Mística conecta la investigación técnica con los saberes afectivos: el territorio se habita a través del apego, la intuición y el descanso campesino. El peaje irrumpe destruyendo la intangibilidad de la vida cotidiana.",
+                pedagogic: "La instalación de un peaje en San Félix demuestra el sesgo de reducir la movilidad a una transacción económica. La baraja exige priorizar la cartografía afectiva y los derechos del tejido social local por encima de las métricas de recaudo."
             },
             carretera: {
-                title: "Dilema de Construcción de Vía en Ladera (Robledal)",
-                tree: "<strong>Dictamen Oracular:</strong> <em>La raíz expuesta es el preludio del desmoronamiento.</em><br><br><strong>Análisis Territorial:</strong> La apertura de una bancada vial en la ladera implica la mutilación directa del sistema radicular del Cupressus lusitanica y de los robles nativos. El Árbol advierte que al cortar el talud se elimina el freno natural contra la gravedad. Su copa de 25 metros, capaz de peinar la niebla para sembrar agua en el suelo, queda desposeída. La vía transforma un amortiguador climático en un vector de erosión geotécnica y desestabilización hídrica.",
-                mushroom: "<strong>Dictamen Oracular:</strong> <em>Cortar la tierra es decapitar la red de la vida.</em><br><br><strong>Análisis Territorial:</strong> La maquinaria pesada desgarra el horizonte orgánico del suelo donde la Ectomicorriza teje su red. Al remover la capa vegetal para pavimentar, se asfixia la respiración microbiana y se rompe el intercambio de nutrientes entre la flora del subsuelo. El Hongo enseña que una ladera sin micelio es una ladera muerta, propensa a liquefacciones y deslizamientos catastróficos que ninguna obra civil inerte puede mitigar a largo plazo.",
-                animal: "<strong>Dictamen Oracular:</strong> <em>El asfalto divide la casa en dos mitades inaccesibles.</em><br><br><strong>Análisis Territorial:</strong> Para el Barranquero, una vía en la ladera representa una trinchera insuperable. Sus hábitos de vuelo bajo a través del sotobosque lo exponen al atropello directo por vehículos a alta velocidad. Además, los cortes verticales en los taludes de la vía destruyen los barrancos suaves de arcilla donde nidifica, desplazándolo hacia áreas periurbanas hostiles y fragmentando irremediablemente el corredor biológico.",
-                mystic: "<strong>Dictamen Oracular:</strong> <em>La velocidad enferma el espíritu del paisaje.</em><br><br><strong>Análisis Territorial:</strong> Lili observa cómo el rugido de los motores expulsa el silencio sagrado de la ladera. La vía no solo transporta vehículos; transporta la prisa, la contaminación sónica y la lógica urbana que degrada la calma campesina. Desde su mirada ancestral, la montaña pierde su carácter de refugio espiritual para convertirse en un mero suelo de paso mercantilizado que degrada la salud mental y comunitaria.",
-                pedagogic: "<strong>Síntesis Pedagógica y Crítica de la Baraja Completa:</strong><br>Los cuatro maestros declaran que la vía en la ladera es una cicatriz infligida por la ceguera ontológica. Mientras los estudios de impacto ambiental reducen la ladera a metros cúbicos de tierra a remover, la baraja demuestra que se está destruyendo un organismo vivo e intangible. Se debe replantear la necesidad de la carretera hacia soluciones de movilidad limpia no invasivas (como cables aéreos o senderos ecológicos), priorizando la restauración biológica de la ladera."
+                title: "Dilema de Ampliación Vial en Ladera (Robledal)",
+                tree: "La apertura de una bancada vial en la ladera implica la mutilación directa del sistema radicular del Cupressus lusitanica y de los robles nativos. El Árbol advierte que al cortar el talud se elimina el freno natural contra la gravedad. Su copa, capaz de peinar la niebla para sembrar agua en el suelo, queda desposeída. La vía transforma un amortiguador climático en un vector de erosión geotécnica.",
+                mushroom: "La maquinaria pesada desgarra el horizonte orgánico del suelo donde la Ectomicorriza teje su red. Al remover la capa vegetal para pavimentar, se asfixia la respiración microbiana y se rompe el intercambio de nutrientes entre la flora del subsuelo. El Hongo enseña que una ladera sin micelio es una ladera muerta, propensa a liquefacciones y deslizamientos catastróficos.",
+                animal: "Para el Barranquero, una vía en la ladera representa una trinchera insuperable. Sus hábitos de vuelo bajo a través del sotobosque lo exponen al atropello directo por vehículos. Además, los cortes verticales en los taludes destruyen los barrancos suaves de arcilla donde nidifica, desplazándolo hacia áreas periurbanas hostiles.",
+                mystic: "Lili observa cómo el rugido de los motores expulsa el silencio sagrado de la ladera. La vía no solo transporta vehículos; transporta la prisa y la lógica urbana que degrada la calma campesina. Desde su mirada ancestral, la montaña pierde su carácter de refugio espiritual para convertirse en un mero suelo de paso mercantilizado.",
+                pedagogic: "Ampliar la vía en ladera es una intervención antropocéntrica que destruye las redes más-que-humanas. Se exige un diseño de conectividad ecológica e infraestructuras blandas."
             },
             canalizacion: {
-                title: "Dilema de Canalización en Concreto de Quebrada Nativa",
-                tree: "<strong>Dictamen Oracular:</strong> <em>Un río aprisionado en concreto olvida cómo alimentar a sus orillas.</em><br><br><strong>Análisis Territorial:</strong> La canalización en hormigón de la quebrada desconecta la corriente hídrica de la vegetación de ribera. El Viejo Ciprés y los árboles nativos son privados de la infiltración freática natural. Al acelerar artificialmente el flujo del agua para despejar áreas urbanizables, se seca la humedad del suelo circundante, matando la vegetación que previene las crecientes torrenciales cuenca abajo.",
-                mushroom: "<strong>Dictamen Oracular:</strong> <em>El concreto sepulta el aliento del agua y la tierra.</em><br><br><strong>Análisis Territorial:</strong> La interfaz entre la quebrada y la tierra firme es el hábitat más fértil para los hongos saprófitos y micorrizas de ribera. La canalización sepulta con baldosas de cemento esta zona de transición acuático-terrestre, aniquilando los procesos metabólicos de descomposición de materia orgánica y depuración natural del agua que los microorganismos realizan gratuitamente.",
-                animal: "<strong>Dictamen Oracular:</strong> <em>El cauce de cemento es un desierto para quien busca la vida.</em><br><br><strong>Análisis Territorial:</strong> El Barranquero acude a las quebradas no solo a beber agua limpia, sino a cazar invertebrados y pequeños anfibios en las orillas rocosas. La canalización elimina las pozas, los remansos y la vegetación de sotobosque, convirtiendo el riachuelo en un tobogán liso de alta velocidad donde ninguna vida silvestre puede subsistir ni anidar.",
-                mystic: "<strong>Dictamen Oracular:</strong> <em>El murmullo del agua viva no se puede sustituir por el eco del cemento.</em><br><br><strong>Análisis Territorial:</strong> Lili recuerda que las quebradas son las arterias espirituales del territorio, habitadas por mitos de agua y memorias comunitarias. Canalizar una quebrada es silenciar su canto natural, domesticarla hasta matar su misterio y convertir un lugar de encuentro afectivo en un canal de drenaje de residuos inerte.",
-                pedagogic: "<strong>Síntesis Pedagógica y Crítica de la Baraja Completa:</strong><br>La Baraja Completa exige una transición radical en la gestión del agua urbana y rural. Canalizar la quebrada es el reflejo de una visión positivista que concibe al agua únicamente como un riesgo a evacuar. La única ingeniería válida para el presente es la bioingeniería de suelos, la descanalización (renaturalización de cauces) y el reconocimiento de las quebradas como sujetos vivos de derechos."
+                title: "Dilema de Canalización en Concreto de Quebrada",
+                tree: "La canalización en hormigón desconecta la corriente hídrica de la vegetación de ribera. El Viejo Ciprés y los árboles nativos son privados de la infiltración freática natural. Al acelerar artificialmente el flujo del agua para despejar áreas urbanizables, se seca la humedad del suelo circundante, matando la vegetación que previene las crecientes torrenciales cuenca abajo.",
+                mushroom: "La interfaz entre la quebrada y la tierra firme es el hábitat más fértil para las micorrizas de ribera. La canalización sepulta con baldosas de cemento esta zona de transición acuático-terrestre, aniquilando los procesos metabólicos de descomposición de materia orgánica y depuración natural del agua que los microorganismos realizan gratuitamente.",
+                animal: "El Barranquero acude a las quebradas no solo a beber agua limpia, sino a cazar invertebrados y pequeños anfibios en las orillas rocosas. La canalización elimina las pozas, los remansos y la vegetación de sotobosque, convirtiendo el riachuelo en un tobogán liso de alta velocidad donde ninguna vida silvestre puede subsistir.",
+                mystic: "Lili recuerda que las quebradas son las arterias espirituales del Valle de Aburrá, habitadas por mitos de agua y memorias de los pobladores ancestrales. Canalizar una quebrada es silenciar su canto natural, domesticarla hasta matar su misterio y convertir un lugar de encuentro afectivo en una canalización inerte.",
+                pedagogic: "La canalización hidráulica rígida ignora el metabolismo hídrico natural. La ingeniería debe migrar hacia soluciones basadas en la naturaleza y restauración de cauces vivos."
             },
             general: {
                 title: "Dilema Socioambiental Personalizado",
-                tree: "<strong>Dictamen Oracular:</strong> <em>Evaluación del tiempo profundo.</em><br><br><strong>Análisis Territorial:</strong> El Árbol (Viejo Ciprés) exige evaluar los impactos a largo plazo (décadas y siglos) en lugar de buscar beneficios o soluciones inmediatas a corto plazo que degraden la resiliencia del paisaje.",
-                mushroom: "<strong>Dictamen Oracular:</strong> <em>Revelación de las redes invisibles.</em><br><br><strong>Análisis Territorial:</strong> El Hongo (Ectomicorriza) recuerda analizar los impactos subterráneos, microbiológicos e invisibles y las relaciones de interdependencia que no se aprecian en un plano plano de construcción.",
-                animal: "<strong>Dictamen Oracular:</strong> <em>Respeto a la soberanía del movimiento.</em><br><br><strong>Análisis Territorial:</strong> El Animal (Barranquero) exige garantizar el libre tránsito de la fauna, la conservación de corredores biológicos y la integridad de los hábitats silvestres atravesados por la obra civil.",
-                mystic: "<strong>Dictamen Oracular:</strong> <em>Resguardo del territorio afectivo y sagrado.</em><br><br><strong>Análisis Territorial:</strong> La Mística (Gata Lili) pide considerar el valor afectivo, cultural, simbólico y espiritual que el espacio tiene para las comunidades humanas y no humanas frente a la razón instrumental.",
-                pedagogic: "<strong>Síntesis Pedagógica y Crítica de la Baraja Completa:</strong><br>Toda decisión de ingeniería debe desplazar el sesgo puramente técnico para entablar un diálogo simétrico con la memoria del árbol, la red del hongo, la movilidad del animal y la mística de lo intangible."
+                tree: "El Árbol exige evaluar los impactos a largo plazo en lugar de buscar beneficios o soluciones inmediatas a corto plazo.",
+                mushroom: "El Hongo recuerda analizar los impactos invisibles y las relaciones de interdependencia que no se aprecian en un plano de construcción.",
+                animal: "El Animal exige garantizar el libre tránsito de la fauna y la integridad de los hábitats silvestres atravesados por la obra.",
+                mystic: "La Mística pide considerar el valor afectivo, cultural y simbólico que el espacio tiene para las comunidades humanas y no humanas.",
+                pedagogic: "Toda decisión de ingeniería debe desplazar el sesgo puramente técnico para dialogar con la memoria del árbol, la red del hongo, la movilidad del animal y la mística de lo intangible."
             }
         };
 
-        // Tab Switcher
+        const ENGINEER_MESSAGES = {
+            tree: "Ingeniero/a: La prisa de los cronogramas a menudo ciega la visión del tiempo profundo. El Árbol te recuerda que tus decisiones no se miden en el ciclo de entrega de una obra, sino en las décadas en que tu estructura dialogará con la tierra. Construye con arraigo, paciencia y la sabiduría de quien sabe que las raíces más fuertes son las que se cuidan en silencio.",
+            mushroom: "Ingeniero/a: Tu profesión no es una competencia solitaria de egos ni de firmas individuales. La lección de la micorriza te llama a reconocer que la ingeniería es una red viva y simbiótica: necesitas del sociólogo, del ecólogo, del habitante local y de los saberes del subsuelo. Trabaja en alianza, comparte los recursos y comprende que la verdadera solidez nace de la cooperación transdisciplinar.",
+            animal: "Ingeniero/a: Levanta la mirada de las pantallas, los mapas planos y las líneas rectas. El Barranquero te invita a contemplar las geografías del aire y las trayectorias de los seres no-humanos que cruzan tu proyecto. Que tu diseño no construya muros ni jaulas, sino puentes de vida y senderos de respeto para quienes habitan el territorio sin mapas humanos.",
+            mystic: "Ingeniero/a: No permitas que la rigidez de las fórmulas te despoje de la intuición, la empatía y la sensibilidad. Lili te recuerda que el territorio no es solo masa, volumen y presupuesto; es también refugio, misterio, memoria y afecto. Una ingeniería sin alma es solo una técnica eficiente de destrucción. Diseña siempre con reverencia y amor por lo intangible.",
+            triptych: "Ingeniero/a: La presencia conjunta del Árbol, el Hongo y el Animal te interpela a integrar la estructura, la red y la movilidad en una sola conciencia ética. No diseñes elementos aislados. Reconoce que cada decisión física altera el tiempo del suelo, la salud de las conexiones invisibles y la libertad de los seres que caminan o vuelan. Tu labor es armonizar la técnica con el entramado biótico de la vida.",
+            full: "Ingeniero/a: Tienes ante ti la baraja completa y la mirada de los cuatro maestros. Este es un llamado a la máxima humildad profesional y transformación espiritual. La verdadera ingeniería del futuro no es la que domina o somete la naturaleza con concreto, sino la que escucha su memoria, honra sus alianzas invisibles, respeta a sus habitantes silvestres y abraza la dimensión afectiva y sagrada del territorio. Que tu praxis sea un acto de sanación y cuidado multiespecie."
+        };
+
         function switchTab(tab) {
             const viewDeck = document.getElementById('view-deck');
             const viewOracle = document.getElementById('view-oracle');
@@ -784,7 +753,6 @@
             }
         }
 
-        // Toggle 3D Card Flip
         function toggleCardFlip(cardId) {
             const card = document.getElementById(cardId);
             if (card) {
@@ -792,7 +760,6 @@
             }
         }
 
-        // Preset Setter with exact text
         function setPreset(type) {
             const input = document.getElementById('dilemma-input');
             if (type === 'peaje') {
@@ -804,12 +771,10 @@
             }
         }
 
-        // Theme Toggle (Dark Magenta vs Clean White Mode)
         function toggleTheme() {
             document.body.classList.toggle('light-mode');
         }
 
-        // Detect Dilemma Category
         function getDilemmaType(text) {
             const lower = text.toLowerCase();
             if (lower.includes('peaje') || lower.includes('cobro') || lower.includes('tarifa')) return 'peaje';
@@ -818,7 +783,6 @@
             return 'general';
         }
 
-        // Perform Oracle Reading with STRICT RANDOMNESS
         function performOracleReading() {
             const dilemmaText = document.getElementById('dilemma-input').value.trim();
             if (!dilemmaText) {
@@ -832,21 +796,17 @@
             let selectedKeys = [];
 
             if (count === 1) {
-                // Strict random choice using Math.random()
                 const randomIndex = Math.floor(Math.random() * keys.length);
                 selectedKeys = [keys[randomIndex]];
             } else if (count === 3) {
-                // Triptych: Tree, Mushroom, Animal
                 selectedKeys = ['tree', 'mushroom', 'animal'];
             } else {
-                // Full Deck: All 4
                 selectedKeys = ['tree', 'mushroom', 'animal', 'mystic'];
             }
 
             const dilemmaType = getDilemmaType(dilemmaText);
-            const synthesisData = DILEMMA_SYNTHESIS[dilemmaType];
+            const predictionData = DETAILED_PREDICTIONS[dilemmaType];
 
-            // Render Drawn Cards Grid
             const container = document.getElementById('drawn-cards-container');
             container.innerHTML = '';
 
@@ -865,12 +825,11 @@
                 container.appendChild(cardEl);
             });
 
-            // Synthesize Contextual Response
             const outputEl = document.getElementById('oracle-text-output');
             
             let htmlContent = `
                 <div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-xl font-sans text-xs">
-                    <strong class="text-gold-400 uppercase tracking-wider block font-cinzel mb-1">Dilema de Ingeniería Analizado (${synthesisData.title}):</strong>
+                    <strong class="text-gold-400 uppercase tracking-wider block font-cinzel mb-1">Dilema de Ingeniería Analizado (${predictionData.title}):</strong>
                     "${dilemmaText}"
                 </div>
                 <div class="space-y-4 pt-2">
@@ -878,14 +837,14 @@
 
             selectedKeys.forEach(key => {
                 const card = DECK_DATA[key];
-                const specificSynthesis = synthesisData[key];
+                const detailedText = predictionData[key];
                 
                 htmlContent += `
                     <div class="border-l-2 border-gold-500 pl-3.5 py-1">
                         <h4 class="font-cinzel font-bold text-gold-400 text-xs sm:text-sm flex items-center gap-2">
                             <i class="fa-solid ${card.icon}"></i> ${card.title} — ${card.dimension}
                         </h4>
-                        <div class="text-xs text-gold-300/90 mt-1 leading-relaxed">${specificSynthesis}</div>
+                        <p class="text-xs text-gold-300/90 mt-1 leading-relaxed">${detailedText}</p>
                         <div class="text-xs text-gold-400/90 italic mt-2 font-serif bg-magenta-950/60 p-2.5 rounded border border-gold-500/20">
                             <strong>Pregunta Oracular del Maestro:</strong> "${card.question}"
                         </div>
@@ -893,22 +852,42 @@
                 `;
             });
 
+            let dynamicPedagogicText = "";
+            let engineerMessageText = "";
+
+            if (count === 1) {
+                const singleKey = selectedKeys[0];
+                const singleCard = DECK_DATA[singleKey];
+                dynamicPedagogicText = `La tirada de una sola carta enfoca la atención pedagógica exclusivamente sobre la dimensión de ${singleCard.dimension}. Al resolver este dilema, la ingeniería debe desplazar su lógica habitual para responder en primer lugar al dictamen ontológico de ${singleCard.title}.`;
+                engineerMessageText = ENGINEER_MESSAGES[singleKey];
+            } else if (count === 3) {
+                dynamicPedagogicText = `El Tríptico conecta de forma integrada las tres dimensiones bióticas y físicas del territorio: la temporalidad del Árbol, las redes subterráneas del Hongo y la movilidad del Animal. La solución al dilema exige un diseño que respete simultáneamente la memoria del suelo, el metabolismo invisible y los corredores de fauna silvestre.`;
+                engineerMessageText = ENGINEER_MESSAGES.triptych;
+            } else {
+                dynamicPedagogicText = predictionData.pedagogic;
+                engineerMessageText = ENGINEER_MESSAGES.full;
+            }
+
             htmlContent += `
                 </div>
                 <div class="mt-4 pt-3 border-t border-gold-500/30 text-xs font-sans text-gold-300/90 leading-relaxed bg-magenta-800/40 p-3.5 rounded-xl border border-gold-500/20">
-                    <strong class="text-gold-400 block font-cinzel mb-1 text-sm">Dictamen Pedagógico para la Plenaria (Prof. Cathy Vieira):</strong>
-                    ${synthesisData.pedagogic}
+                    <strong class="text-gold-400 block font-cinzel mb-1 text-sm">Dictamen Pedagógico:</strong>
+                    ${dynamicPedagogicText}
+                </div>
+                <div class="mt-3 text-xs font-sans text-gold-300/90 leading-relaxed bg-gradient-to-r from-gold-500/10 via-magenta-800/60 to-gold-500/10 p-4 rounded-xl border border-gold-500/40 shadow-inner">
+                    <strong class="text-gold-400 block font-cinzel mb-1.5 text-sm flex items-center gap-2">
+                        <i class="fa-solid fa-heart-pulse text-gold-500"></i> Mensaje Oracular para la Conciencia del/de la Ingeniero/a:
+                    </strong>
+                    <p class="italic font-serif text-gold-300/90 text-xs sm:text-sm leading-relaxed">${engineerMessageText}</p>
                 </div>
             `;
 
             outputEl.innerHTML = htmlContent;
 
-            // Show Results Panel
             document.getElementById('oracle-results').classList.remove('hidden');
             document.getElementById('oracle-results').scrollIntoView({ behavior: 'smooth' });
         }
 
-        // Speech Synthesis Readout
         function speakOracleReading() {
             const output = document.getElementById('oracle-text-output');
             if (!output) return;
