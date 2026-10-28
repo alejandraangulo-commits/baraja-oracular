@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Los 4 Maestros del Territorio - Cartas de Navegación Ambiental</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Cinzel & Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        magenta: {
+                            950: '#12020a',
+                            900: '#1f0412',
+                            800: '#320a1d',
+                            700: '#521230',
+                            600: '#751945',
+                        },
+                        gold: {
+                            300: '#f8eab8',
+                            400: '#e8cb6b',
+                            500: '#d4af37',
+                            600: '#a88620',
+                        }
+                    },
+                    fontFamily: {
+                        cinzel: ['Cinzel', 'serif'],
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #12020a;
+            color: #f8eab8;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .font-cinzel {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* Mechanics for 3D Card Flip */
+        .card-container {
+            perspective: 1200px;
+        }
+
+        .card-flipper {
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+            position: relative;
+        }
+
+        .card-flipper.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 1.25rem;
+        }
+
+        .card-front {
+            z-index: 2;
+            transform: rotateY(0deg);
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            z-index: 1;
+        }
+
+        /* Custom Scrollbar for Card Back */
+        .custom-scroll::-webkit-scrollbar {
+            width: 5px;
+        }
+        .custom-scroll::-webkit-scrollbar-track {
+            background: rgba(50, 10, 29, 0.6);
+            border-radius: 4px;
+        }
+        .custom-scroll::-webkit-scrollbar-thumb {
+            background: #d4af37;
+            border-radius: 4px;
+        }
+
+        /* Gold Foil Glow Effect */
+        .gold-border-glow {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.25), inset 0 0 12px rgba(212, 175, 55, 0.15);
+        }
+
+        /* Light Mode Styles for Academic Print Presentation */
+        body.light-mode {
+            background-color: #f8fafc;
+            color: #1e1b18;
+        }
+        body.light-mode header,
+        body.light-mode footer {
+            background-color: #ffffff;
+            border-color: #cbd5e1;
+            color: #1e1b18;
+        }
+        body.light-mode .bg-magenta-800,
+        body.light-mode .bg-magenta-900 {
+            background-color: #ffffff !important;
+            border-color: #d4af37;
+            color: #1e1b18 !important;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+        body.light-mode .text-gold-300, 
+        body.light-mode .text-gold-400,
+        body.light-mode .text-gold-500 {
+            color: #751945 !important;
+        }
+        body.light-mode .card-back-bg {
+            background-color: #ffffff !important;
+            color: #1e1b18 !important;
+            border: 2px solid #d4af37;
+        }
+        body.light-mode .team-box {
+            background-color: #f1f5f9;
+            border-color: #cbd5e1;
+            color: #1e1b18;
+        }
+        body.light-mode .oracle-box {
+            background-color: #ffffff !important;
+            border-color: #d4af37 !important;
+            color: #1e1b18 !important;
+        }
+        body.light-mode .preset-btn {
+            background-color: #f1f5f9 !important;
+            color: #751945 !important;
+            border-color: #cbd5e1 !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <!-- TOP NAVIGATION HEADER -->
+    <header class="border-b border-gold-500/30 bg-magenta-900/95 backdrop-blur-md sticky top-0 z-50 px-4 py-3">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-3">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full border-2 border-gold-500 flex items-center justify-center bg-magenta-800 text-gold-400 shadow">
+                    <i class="fa-solid fa-compass text-lg"></i>
+                </div>
+                <div>
+                    <h1 class="font-cinzel text-lg sm:text-xl font-bold tracking-wider text-gold-400">
+                        CARTAS DE NAVEGACIÓN AMBIENTAL
+                    </h1>
+                    <p class="text-xs text-gold-300/80">Sociedad y Ambiente | Escuela Ambiental — Prof. Cathy Vieira</p>
+                </div>
+            </div>
+
+            <!-- View Switcher & Action Controls -->
+            <div class="flex items-center space-x-2 bg-magenta-800/90 p-1 rounded-xl border border-gold-500/40">
+                <button id="tab-deck" onclick="switchTab('deck')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 bg-gold-500 text-magenta-950 font-bold shadow">
+                    <i class="fa-solid fa-layer-group mr-1.5"></i> Explorar Baraja
+                </button>
+                <button id="tab-oracle" onclick="switchTab('oracle')" class="px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 text-gold-300 hover:text-gold-400">
+                    <i class="fa-solid fa-crystal-ball mr-1.5"></i> Consulta Oracular
+                </button>
+                <button id="theme-toggle" onclick="toggleTheme()" class="p-1.5 px-3 rounded-lg text-gold-400 hover:bg-magenta-700/50 transition text-xs font-semibold flex items-center gap-1 border border-gold-500/30" title="Cambiar modo claro / oscuro">
+                    <i class="fa-solid fa-circle-half-stroke text-sm"></i>
+                    <span class="hidden sm:inline">Modo Blanco</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTAINER -->
+    <main class="flex-grow max-w-7xl w-full mx-auto p-4 sm:p-6 flex flex-col">
+
+        <!-- OFFICIAL TEAM MEMBERS BANNER -->
+        <div class="team-box bg-magenta-800/80 border border-gold-500/50 rounded-2xl p-4 sm:p-5 mb-6 backdrop-blur-sm shadow-xl">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+                <div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-[10px] uppercase font-bold tracking-widest text-gold-400 font-cinzel bg-magenta-900/80 px-2 py-0.5 rounded border border-gold-500/30">Dispositivo Pedagógico Transdisciplinar</span>
+                        <span class="text-[10px] text-gold-300/80 font-mono">San Félix / Valle de Aburrá</span>
+                    </div>
+                    <h2 class="text-lg sm:text-xl font-bold font-cinzel text-gold-400 mt-1">
+                        Los 4 Maestros del Territorio / Cartas de Navegación Ambiental
+                    </h2>
+                    <p class="text-xs text-gold-300/90 mt-1 max-w-3xl leading-relaxed">
+                        Un archivo pedagógico para desplazar la mirada antropocéntrica en la ingeniería. Explora las temporalidades del árbol, las redes del hongo, la movilidad del animal y los intangibles de la mística.
+                    </p>
+                </div>
+                
+                <!-- Authors List -->
+                <div class="bg-magenta-950/90 border border-gold-500/40 rounded-xl p-3 w-full lg:w-auto min-w-[320px] shadow-inner">
+                    <div class="flex items-center justify-between border-b border-gold-500/30 pb-1.5 mb-2">
+                        <span class="text-[11px] font-bold uppercase text-gold-400 font-cinzel flex items-center gap-1.5">
+                            <i class="fa-solid fa-graduation-cap text-gold-500"></i> Equipo Estudiantil:
+                        </span>
+                        <span class="text-[10px] font-mono text-gold-300/70">5 Integrantes</span>
+                    </div>
+                    <ul class="text-xs text-gold-300/90 space-y-1 font-medium">
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[6px] text-gold-500"></i> María Alejandra Angulo Franco</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[6px] text-gold-500"></i> Isabela Jiménez Ruiz</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[6px] text-gold-500"></i> Carlos Andrés Monsalve Benítez</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[6px] text-gold-500"></i> Carlos David Pérez Gallego</li>
+                        <li class="flex items-center gap-1.5"><i class="fa-solid fa-circle text-[6px] text-gold-500"></i> Rodrigo Nicolás Trujillo Molina</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- VIEW 1: DECK EXPLORER -->
+        <section id="view-deck" class="block space-y-6">
+            <div class="text-center max-w-2xl mx-auto mb-2">
+                <p class="text-xs font-semibold text-gold-400 uppercase tracking-widest font-cinzel"><i class="fa-solid fa-hand-pointer mr-1"></i> Toca o haz clic en cualquier carta para girarla</p>
+            </div>
+
+            <!-- Cards Grid (4 Cards with Local Images) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+                
+                <!-- CARD 1: THE TREE (El Ciprés) -->
+                <div class="card-container h-[650px] w-full">
+                    <div id="flipper-tree" class="card-flipper w-full h-full cursor-pointer" onclick="toggleCardFlip('flipper-tree')">
+                        <!-- ANVERSO (Real Image arbol.jpg) -->
+                        <div class="card-front bg-magenta-800 border-2 border-gold-500/80 rounded-2xl p-4 flex flex-col justify-between gold-border-glow shadow-2xl overflow-hidden relative">
+                            <!-- Top Header -->
+                            <div class="flex justify-between items-center z-10">
+                                <span class="font-cinzel text-xs font-bold px-2.5 py-0.5 border border-gold-500 rounded text-gold-400 bg-magenta-950">I</span>
+                                <span class="text-[11px] font-bold tracking-widest text-gold-300 uppercase font-cinzel">EL ÁRBOL</span>
+                            </div>
+
+                            <!-- Real Image Frame -->
+                            <div class="my-auto z-10 flex flex-col items-center">
+                                <div class="w-full h-72 rounded-xl border-2 border-gold-500/60 overflow-hidden shadow-lg relative my-2 bg-magenta-950 flex items-center justify-center">
+                                    <img src="./arbol.jpg" alt="Viejo Ciprés en la Niebla" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'p-4 text-center text-xs text-gold-300\'><i class=\'fa-solid fa-tree text-3xl text-gold-500 mb-2 block\'></i>[Coloca la foto real arbol.jpg en esta carpeta]</div>';">
+                                    <div class="absolute bottom-2 left-2 right-2 text-center bg-black/70 backdrop-blur-sm p-1 rounded border border-gold-500/30">
+                                        <p class="text-[10px] text-gold-300 font-mono">San Félix, Cordillera Central</p>
+                                    </div>
+                                </div>
+                                <h3 class="font-cinzel text-lg font-bold text-gold-400 tracking-wide mt-1">THE TREE</h3>
+                                <p class="text-xs text-gold-300 font-cinzel italic">Viejo Ciprés y la Niebla</p>
+                                <p class="text-[10px] text-gold-400/80 font-mono mt-0.5">Cupressus lusitanica</p>
+                            </div>
+
+                            <!-- Footer Quote -->
+                            <div class="border-t border-gold-500/30 pt-2.5 z-10 text-center">
+                                <p class="text-[11px] text-gold-300 italic font-serif leading-snug">"No busques claridad en el horizonte cuando el camino exige que mires hacia adentro."</p>
+                                <div class="mt-2 text-[10px] text-gold-400 font-bold tracking-wider uppercase flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-rotate"></i> Voltear Carta
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- REVERSO (5 Academic Points + Rodrigo's Full Narrative) -->
+                        <div class="card-back card-back-bg bg-magenta-900 border-2 border-gold-500/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-between custom-scroll overflow-y-auto text-gold-300">
+                            <div>
+                                <div class="flex justify-between items-center border-b border-gold-500/30 pb-2 mb-2.5">
+                                    <span class="font-cinzel text-xs font-bold text-gold-400">REVERSO: LA LECCIÓN</span>
+                                    <span class="text-[10px] px-2 py-0.5 bg-gold-500/20 text-gold-400 rounded font-bold font-mono">Carta I</span>
+                                </div>
+
+                                <div class="space-y-3 text-[11px] leading-relaxed">
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-tree text-gold-500"></i> 1. ¿Quién es este maestro?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Ubicado en medio de una terraza en las vertientes o laderas ramificadas occidentales de la cordillera central de los Andes, es un gigante de unos 25 metros de altura que, con su enorme e imponente tronco, da solidez por su rectitud, cilíndrico y robusto. Está en su madurez y su corteza de color marrón se fisura con el pasar de los años. Según la leyenda tiene más de 110 años. Produce pequeños conos esféricos leñosos de 1 a 2 cm de diámetro, que al madurar liberan semillas aladas. Es el guardián del predio. Relata la leyenda que es el castillo de los nomos de San Félix y es la casa de muchas bifloras; conversa con sus amigos los pájaros colibríes, cucaracheros, mirlas, barranquero, carriquí copete azul y en las noches dialoga de los sueños de los habitantes de la vereda con el currucutú chobila, al cual vio nacer.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-cloud-showers-water text-gold-500"></i> 2. ¿Qué hace que normalmente no vemos?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            A través de sus diminutas hojas escamosas, actúan como un atrapanieblas biológico que "cosecha" agua de la bruma andina y regula la humedad de la ladera. Sin embargo, como especie exótica introducida (*Cupressus lusitanica*), sus acículas caídas acidifican el suelo e inhiben el crecimiento del sotobosque nativo, demostrando la tensión entre su refugio afectivo y su impacto en la química del suelo.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-hourglass-half text-gold-500"></i> 3. Concepto del Curso
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            <strong class="text-gold-400">Temporalidades e Hibridación Territorial:</strong> Representa la escala del "tiempo profundo del árbol" frente a la aceleración de la infraestructura. Muestra cómo una especie exótica se convierte en patrimonio afectivo e histórico de la vereda.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-brain text-gold-500"></i> 4. ¿Qué nos enseña?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            El viejo ciprés no lucha contra la bruma; comprende que la niebla no es pérdida de visión, sino un manto de protección y tiempo de introyección. Tus raíces sostienen tu corona: en la incertidumbre, confía en lo construido en lo profundo. Invita a hacer una pausa para escuchar los sonidos del silencio y a conectar tus 3 mundos: la raíz (lo oculto o inconsciente), el tronco (lo visible o cuerpo físico) y la frondosa copa (el espíritu). Su resina espiritual mantiene tu esencia intacta sin importar lo frío o nebuloso del entorno.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pregunta Oracular -->
+                            <div class="mt-3 pt-2 border-t border-gold-500/40 bg-gold-500/10 p-2.5 rounded-xl border">
+                                <span class="text-[10px] uppercase font-bold text-gold-400 block tracking-wider font-cinzel">5. Pregunta Oracular para la Ingeniería</span>
+                                <p class="text-xs text-gold-300 font-serif italic mt-1 leading-snug">
+                                    "¿Qué temporalidades de la memoria y del paisaje estamos destruyendo al evaluar el territorio únicamente por su rendimiento a corto plazo?"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 2: THE MUSHROOM (hongo.jpg) -->
+                <div class="card-container h-[650px] w-full">
+                    <div id="flipper-mushroom" class="card-flipper w-full h-full cursor-pointer" onclick="toggleCardFlip('flipper-mushroom')">
+                        <!-- ANVERSO -->
+                        <div class="card-front bg-magenta-800 border-2 border-gold-500/80 rounded-2xl p-4 flex flex-col justify-between gold-border-glow shadow-2xl overflow-hidden relative">
+                            <div class="flex justify-between items-center z-10">
+                                <span class="font-cinzel text-xs font-bold px-2.5 py-0.5 border border-gold-500 rounded text-gold-400 bg-magenta-950">II</span>
+                                <span class="text-[11px] font-bold tracking-widest text-gold-300 uppercase font-cinzel">EL HONGO</span>
+                            </div>
+
+                            <!-- Real Image Frame -->
+                            <div class="my-auto z-10 flex flex-col items-center">
+                                <div class="w-full h-72 rounded-xl border-2 border-gold-500/60 overflow-hidden shadow-lg relative my-2 bg-magenta-950 flex items-center justify-center">
+                                    <img src="./hongo.jpg" alt="Ectomicorriza del Robledal" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'p-4 text-center text-xs text-gold-300\'><i class=\'fa-solid fa-disease text-3xl text-gold-500 mb-2 block\'></i>[Coloca la foto real hongo.jpg en esta carpeta]</div>';">
+                                    <div class="absolute bottom-2 left-2 right-2 text-center bg-black/70 backdrop-blur-sm p-1 rounded border border-gold-500/30">
+                                        <p class="text-[10px] text-gold-300 font-mono">Suelo del Robledal / San Félix</p>
+                                    </div>
+                                </div>
+                                <h3 class="font-cinzel text-lg font-bold text-gold-400 tracking-wide mt-1">THE MUSHROOM</h3>
+                                <p class="text-xs text-gold-300 font-cinzel italic">Ectomicorriza del Robledal</p>
+                                <p class="text-[10px] text-gold-400/80 font-mono mt-0.5">Cortinarius / Laccaria sp.</p>
+                            </div>
+
+                            <div class="border-t border-gold-500/30 pt-2.5 z-10 text-center">
+                                <p class="text-[11px] text-gold-300 italic font-serif leading-snug">"Lo que sostiene la vida en la superficie depende de las alianzas invisibles del sotobosque."</p>
+                                <div class="mt-2 text-[10px] text-gold-400 font-bold tracking-wider uppercase flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-rotate"></i> Voltear Carta
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- REVERSO -->
+                        <div class="card-back card-back-bg bg-magenta-900 border-2 border-gold-500/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-between custom-scroll overflow-y-auto text-gold-300">
+                            <div>
+                                <div class="flex justify-between items-center border-b border-gold-500/30 pb-2 mb-2.5">
+                                    <span class="font-cinzel text-xs font-bold text-gold-400">REVERSO: LA LECCIÓN</span>
+                                    <span class="text-[10px] px-2 py-0.5 bg-gold-500/20 text-gold-400 rounded font-bold font-mono">Carta II</span>
+                                </div>
+
+                                <div class="space-y-3 text-[11px] leading-relaxed">
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-disease text-gold-500"></i> 1. ¿Quién es este maestro?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Silencioso y fértil, habita la humeda hojarasca de los robledales andinos (*Quercus humboldtii*) en San Félix. Lo que emerge en la superficie como una pequeña seta leñosa o sombrerillo de tonos pardos es tan solo el fruto efímero de un ser infinitamente más vasto que se extiende bajo la tierra húmeda del bosque montano.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-network-wired text-gold-500"></i> 2. ¿Qué hace que normalmente no vemos?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Teje la red micorrízica subterránea (*Wood Wide Web*), una intrincada malla de filamentos de hifas blancas que abraza las raíces de los robles. Transfiere agua, fósforo y nitrógeno entre árboles ancianos y plántulas jóvenes, funcionando como una red comunitaria de redistribución de recursos y alquimia de reciclaje orgánico.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-recycle text-gold-500"></i> 3. Concepto del Curso
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            <strong class="text-gold-400">Metabolismo Territorial e Interdependencia:</strong> Desmonta la noción lineal de "residuo" en la ingeniería. Muestra cómo la materia en descomposición es el origen de nuevos ciclos vitales no antropocéntricos.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-hands-holding-circle text-gold-500"></i> 4. ¿Qué nos enseña?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Ninguna estructura sobrevive sola. La verdadera fortaleza de un ecosistema no reside en la jerarquía del dosel o la masa visible, sino en la densidad y reciprocidad de sus alianzas subterráneas e invisibles. Nos enseña la lección de la cooperación silenciosa frente al individualismo.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 pt-2 border-t border-gold-500/40 bg-gold-500/10 p-2.5 rounded-xl border">
+                                <span class="text-[10px] uppercase font-bold text-gold-400 block tracking-wider font-cinzel">5. Pregunta Oracular para la Ingeniería</span>
+                                <p class="text-xs text-gold-300 font-serif italic mt-1 leading-snug">
+                                    "¿Qué redes invisibles y ciclos metabólicos de materia alteraremos aunque no aparezcan representados en los planos de la obra?"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 3: THE ANIMAL (animal.jpg) -->
+                <div class="card-container h-[650px] w-full">
+                    <div id="flipper-animal" class="card-flipper w-full h-full cursor-pointer" onclick="toggleCardFlip('flipper-animal')">
+                        <!-- ANVERSO -->
+                        <div class="card-front bg-magenta-800 border-2 border-gold-500/80 rounded-2xl p-4 flex flex-col justify-between gold-border-glow shadow-2xl overflow-hidden relative">
+                            <div class="flex justify-between items-center z-10">
+                                <span class="font-cinzel text-xs font-bold px-2.5 py-0.5 border border-gold-500 rounded text-gold-400 bg-magenta-950">III</span>
+                                <span class="text-[11px] font-bold tracking-widest text-gold-300 uppercase font-cinzel">EL ANIMAL</span>
+                            </div>
+
+                            <!-- Real Image Frame -->
+                            <div class="my-auto z-10 flex flex-col items-center">
+                                <div class="w-full h-72 rounded-xl border-2 border-gold-500/60 overflow-hidden shadow-lg relative my-2 bg-magenta-950 flex items-center justify-center">
+                                    <img src="./animal.jpg" alt="El Barranquero" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'p-4 text-center text-xs text-gold-300\'><i class=\'fa-solid fa-dove text-3xl text-gold-500 mb-2 block\'></i>[Coloca la foto real animal.jpg en esta carpeta]</div>';">
+                                    <div class="absolute bottom-2 left-2 right-2 text-center bg-black/70 backdrop-blur-sm p-1 rounded border border-gold-500/30">
+                                        <p class="text-[10px] text-gold-300 font-mono">Valle de Aburrá / San Félix</p>
+                                    </div>
+                                </div>
+                                <h3 class="font-cinzel text-lg font-bold text-gold-400 tracking-wide mt-1">THE ANIMAL</h3>
+                                <p class="text-xs text-gold-300 font-cinzel italic">El Barranquero (Soledad)</p>
+                                <p class="text-[10px] text-gold-400/80 font-mono mt-0.5">Momotus aequatorialis</p>
+                            </div>
+
+                            <div class="border-t border-gold-500/30 pt-2.5 z-10 text-center">
+                                <p class="text-[11px] text-gold-300 italic font-serif leading-snug">"Las fronteras de concreto no detienen el vuelo de quien habita el territorio sin mapas humanos."</p>
+                                <div class="mt-2 text-[10px] text-gold-400 font-bold tracking-wider uppercase flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-rotate"></i> Voltear Carta
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- REVERSO (Rodrigo's Full Narrative) -->
+                        <div class="card-back card-back-bg bg-magenta-900 border-2 border-gold-500/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-between custom-scroll overflow-y-auto text-gold-300">
+                            <div>
+                                <div class="flex justify-between items-center border-b border-gold-500/30 pb-2 mb-2.5">
+                                    <span class="font-cinzel text-xs font-bold text-gold-400">REVERSO: LA LECCIÓN</span>
+                                    <span class="text-[10px] px-2 py-0.5 bg-gold-500/20 text-gold-400 rounded font-bold font-mono">Carta III</span>
+                                </div>
+
+                                <div class="space-y-3 text-[11px] leading-relaxed">
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-dove text-gold-500"></i> 1. ¿Quién es este maestro?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Es el Barranquero (*Momotus aequatorialis*), también conocido como Soledad o Relojero. Ave majestuosa de los bosques andinos del Valle de Aburrá y San Félix. Luciendo su inconfundible diadema de un azul turquesa vibrante y su característica cola larga terminada en raquetas que péndula serenamente, es el centinela multicolor de los barrancos y quebradas.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-route text-gold-500"></i> 2. ¿Qué hace que normalmente no vemos?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Juega un rol vital en la dispersión de semillas nativas y en la arquitectura del suelo, al excavar profundas galerías en barrancos de tierra para anidar. Asimismo, adapta sus trayectorias posándose sobre cables de alta tensión y postes, reconfigurando sus mapas de vuelo en medio del avance de las infraestructuras humanas.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-vector-square text-gold-500"></i> 3. Concepto del Curso
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            <strong class="text-gold-400">Agencia No Humana y Corredores Biológicos:</strong> Muestra la soberanía espacial de la fauna que ignora los límites catastrales. Invita a pensar en la conectividad ecológica activa frente al diseño urbano antropocéntrico.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-shield-cat text-gold-500"></i> 4. ¿Qué nos enseña?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Nos enseña sobre la solitud contemplativa y la resiliencia territorial. Su canto y presencia constante entre los cables y la bruma nos recuerdan que los proyectos de infraestructura no ocurren en un espacio vacío, sino sobre autopistas de vuelo y vida que deben ser respetadas e integradas.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 pt-2 border-t border-gold-500/40 bg-gold-500/10 p-2.5 rounded-xl border">
+                                <span class="text-[10px] uppercase font-bold text-gold-400 block tracking-wider font-cinzel">5. Pregunta Oracular para la Ingeniería</span>
+                                <p class="text-xs text-gold-300 font-serif italic mt-1 leading-snug">
+                                    "¿Qué corredores biológicos y trayectorias de vuelo desaparecen cuando asumimos que las únicas fronteras que importan son las del diseño humano?"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CARD 4: THE MYSTIC (mistica.jpg) - HARMONIZED LILI -->
+                <div class="card-container h-[650px] w-full">
+                    <div id="flipper-mystic" class="card-flipper w-full h-full cursor-pointer" onclick="toggleCardFlip('flipper-mystic')">
+                        <!-- ANVERSO -->
+                        <div class="card-front bg-magenta-800 border-2 border-gold-500/80 rounded-2xl p-4 flex flex-col justify-between gold-border-glow shadow-2xl overflow-hidden relative">
+                            <div class="flex justify-between items-center z-10">
+                                <span class="font-cinzel text-xs font-bold px-2.5 py-0.5 border border-gold-500 rounded text-gold-400 bg-magenta-950">IV</span>
+                                <span class="text-[11px] font-bold tracking-widest text-gold-300 uppercase font-cinzel">LA MÍSTICA</span>
+                            </div>
+
+                            <!-- Real Image Frame -->
+                            <div class="my-auto z-10 flex flex-col items-center">
+                                <div class="w-full h-72 rounded-xl border-2 border-gold-500/60 overflow-hidden shadow-lg relative my-2 bg-magenta-950 flex items-center justify-center">
+                                    <img src="./mistica.jpg" alt="Lili la gata mística en la ventana" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'p-4 text-center text-xs text-gold-300\'><i class=\'fa-solid fa-cat text-3xl text-gold-500 mb-2 block\'></i>[Coloca la foto real mistica.jpg en esta carpeta]</div>';">
+                                    <div class="absolute bottom-2 left-2 right-2 text-center bg-black/70 backdrop-blur-sm p-1 rounded border border-gold-500/30">
+                                        <p class="text-[10px] text-gold-300 font-mono">Lili en el Borde de la Ventana</p>
+                                    </div>
+                                </div>
+                                <h3 class="font-cinzel text-lg font-bold text-gold-400 tracking-wide mt-1">THE MYSTIC</h3>
+                                <p class="text-xs text-gold-300 font-cinzel italic">Lili — La Gata Mística</p>
+                                <p class="text-[10px] text-gold-400/80 font-mono mt-0.5">Felis catus</p>
+                            </div>
+
+                            <div class="border-t border-gold-500/30 pt-2.5 z-10 text-center">
+                                <p class="text-[11px] text-gold-300 italic font-serif leading-snug">"Existen verdades del territorio que no se leen con instrumentos, sino con reverencia, intuición y afecto."</p>
+                                <div class="mt-2 text-[10px] text-gold-400 font-bold tracking-wider uppercase flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-rotate"></i> Voltear Carta
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- REVERSO -->
+                        <div class="card-back card-back-bg bg-magenta-900 border-2 border-gold-500/90 rounded-2xl p-4 sm:p-5 flex flex-col justify-between custom-scroll overflow-y-auto text-gold-300">
+                            <div>
+                                <div class="flex justify-between items-center border-b border-gold-500/30 pb-2 mb-2.5">
+                                    <span class="font-cinzel text-xs font-bold text-gold-400">REVERSO: LA LECCIÓN</span>
+                                    <span class="text-[10px] px-2 py-0.5 bg-gold-500/20 text-gold-400 rounded font-bold font-mono">Carta IV</span>
+                                </div>
+
+                                <div class="space-y-3 text-[11px] leading-relaxed">
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-cat text-gold-500"></i> 1. ¿Quién es este maestro?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Lili es mi gata doméstica, una felina que habita el borde de la ventana y el umbral del hogar. Su presencia cotidiana trasciende lo estrictamente biológico: representa un vínculo profundo y afectivo que me conecta tanto con la serenidad de la vida doméstica como con la fuerza pulsante del mundo natural y salvaje. Los felinos han encarnado históricamente el misterio, la autonomía y la percepción liminal; Lili es, en mi territorio personal, el ser que me recuerda diariamente que existe un lenguaje de mirada y silencio que también forma parte del entramado vivo del entorno.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-wand-magic-sparkles text-gold-500"></i> 2. ¿Qué hace que normalmente no vemos?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Suele pasarse por alto que el territorio no está constituido únicamente por elementos físicos o métricas cuantificables, sino por relaciones intangibles, significados simbólicos, mitos, saberes culturales y afectos. Mientras la mirada técnica evalúa metros cuadrados y flujos materiales, seres como Lili habitan el espacio desde una sensibilidad no humana, detectando sutilezas del viento, sombras y vibraciones invisibles. Nos devela que existe una dimensión mística y ancestral en la convivencia diaria con la naturaleza que la razón instrumental suele dejar fuera del mapa.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-eye text-gold-500"></i> 3. Concepto del Curso
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            <strong class="text-gold-400">Ontología Plural y Cartografía Afectiva:</strong> Cuestiona el sesgo antropocéntrico que reduce el territorio a un simple objeto de intervención o cálculo ingenieril. Nos permite entender que las geografías también son afectivas y simbólicas, donde lo "místico" y lo cultural no son opuestos a la ciencia, sino dimensiones complejas que enriquecen y dotan de sentido al habitar.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <h4 class="font-bold text-gold-400 flex items-center gap-1.5">
+                                            <i class="fa-solid fa-heart text-gold-500"></i> 4. ¿Qué nos enseña?
+                                        </h4>
+                                        <p class="text-gold-300/90 mt-0.5">
+                                            Lili nos enseña a valorar lo intangible y a cultivar la intuición frente a la rigidez técnica. Nos demuestra que el territorio es también refugio, misterio y relación. Incluir la carta de La Mística a través de un ser tan especial como un felino es una invitación a desplazar la mirada meramente funcional para reconocer que la conservación y el diseño del espacio deben fundamentarse también en el respeto, el afecto y la fascinación por la vida en todas sus manifestaciones.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 pt-2 border-t border-gold-500/40 bg-gold-500/10 p-2.5 rounded-xl border">
+                                <span class="text-[10px] uppercase font-bold text-gold-400 block tracking-wider font-cinzel">5. Pregunta Oracular para la Ingeniería</span>
+                                <p class="text-xs text-gold-300 font-serif italic mt-1 leading-snug">
+                                    "¿Qué intangibles culturales, afectivos o sagrados ignoramos al reducir una decisión territorial a un cálculo puramente técnico y cuantificable?"
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- VIEW 2: ORACLE SIMULATOR -->
+        <section id="view-oracle" class="hidden space-y-6">
+            <div class="oracle-box bg-magenta-800/90 border border-gold-500/50 rounded-2xl p-6 max-w-4xl mx-auto shadow-2xl backdrop-blur-md">
+                <div class="text-center mb-6">
+                    <span class="text-xs font-bold tracking-widest text-gold-400 uppercase font-cinzel">Plenaria Final — Rúbrica Taller</span>
+                    <h2 class="font-cinzel text-2xl sm:text-3xl font-bold text-gold-400 mt-1">Consulta Oracular del Territorio</h2>
+                    <p class="text-xs sm:text-sm text-gold-300/80 max-w-2xl mx-auto mt-2">
+                        Formula un dilema territorial o de ingeniería. La baraja responderá desde la perspectiva de los seres más-que-humanos para desplazar la mirada antropocéntrica.
+                    </p>
+                </div>
+
+                <!-- Dilemma Form -->
+                <div class="space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-gold-400 uppercase tracking-wider mb-2 font-cinzel">
+                            1. Plantea el Dilema Socioambiental o de Infraestructura:
+                        </label>
+                        <textarea id="dilemma-input" rows="3" class="w-full bg-magenta-950/90 border border-gold-500/50 rounded-xl p-3.5 text-sm text-gold-300 placeholder-gold-500/40 focus:outline-none focus:border-gold-400 focus:ring-1 focus:ring-gold-400 transition" placeholder="Ejemplo: Se propone la instalación y cobro de un peaje en la vía a San Félix..."></textarea>
+                        
+                        <!-- Quick Presets -->
+                        <div class="flex flex-wrap gap-2 mt-2">
+                            <span class="text-[11px] text-gold-400/80 self-center font-semibold">Ejemplos de clase:</span>
+                            <button onclick="setPreset('Construcción e instalación de un peaje financiero sobre la vía de acceso a San Félix, imponiendo barreras económicas y de movilidad a la comunidad local.')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
+                                🛑 Peaje en Vía San Félix
+                            </button>
+                            <button onclick="setPreset('Construcción de una carretera asfaltada de 4 carriles en la ladera de San Félix que fragmenta un parche de robledal.')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
+                                🛣️ Vía en Ladera
+                            </button>
+                            <button onclick="setPreset('Canalización en concreto de una quebrada nativa para control de inundaciones urbanas.')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
+                                🌊 Canalización Quebrada
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Draw Options -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                        <div>
+                            <label class="block text-xs font-bold text-gold-400 uppercase tracking-wider mb-2 font-cinzel">
+                                2. Selección de Tirada Oracular:
+                            </label>
+                            <select id="draw-count" class="w-full bg-magenta-950 border border-gold-500/50 rounded-xl px-3 py-2 text-sm text-gold-300 focus:outline-none focus:border-gold-400">
+                                <option value="1">1 Carta — Enfoque Específico</option>
+                                <option value="3">3 Cartas — Tríptico (Árbol, Hongo, Animal)</option>
+                                <option value="4" selected>4 Cartas — Baraja Completa (+ La Mística)</option>
+                            </select>
+                        </div>
+
+                        <div class="flex items-end">
+                            <button onclick="performOracleReading()" class="w-full bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-magenta-950 font-bold font-cinzel text-sm px-6 py-2.5 rounded-xl hover:brightness-110 active:scale-95 transition shadow-lg flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-wand-magic-sparkles"></i> Consultar Oráculo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reading Results Display -->
+            <div id="oracle-results" class="hidden max-w-5xl mx-auto space-y-6 pt-2">
+                
+                <!-- Drawn Cards Grid -->
+                <div id="drawn-cards-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Dynamic cards inserted here -->
+                </div>
+
+                <!-- Integrated Oracular Response Panel -->
+                <div class="bg-magenta-900/95 border-2 border-gold-500/80 rounded-2xl p-6 shadow-2xl relative gold-border-glow">
+                    <div class="flex items-center justify-between border-b border-gold-500/30 pb-3 mb-4">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-9 h-9 rounded-full bg-gold-500/20 border border-gold-500 flex items-center justify-center text-gold-400">
+                                <i class="fa-solid fa-scroll text-base"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-cinzel text-base sm:text-lg font-bold text-gold-400">Dictamen Oracular Integrado</h3>
+                                <p class="text-[10px] text-gold-300/70">Lectura para la solución del dilema ambiental</p>
+                            </div>
+                        </div>
+
+                        <button id="tts-button" onclick="speakOracleReading()" class="px-3 py-1.5 bg-magenta-800 border border-gold-500/40 rounded-lg text-xs font-medium text-gold-300 hover:bg-gold-500/20 transition flex items-center gap-1.5 shadow">
+                            <i class="fa-solid fa-volume-high text-gold-400"></i> Escuchar Dictamen
+                        </button>
+                    </div>
+
+                    <div id="oracle-text-output" class="text-sm text-gold-300 leading-relaxed space-y-4 font-serif">
+                        <!-- Dynamic generated text -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="border-t border-gold-500/20 bg-magenta-950/90 py-4 px-4 text-center text-xs text-gold-400/80 mt-auto">
+        <p class="font-cinzel font-semibold">Cartas de Navegación Ambiental — Dispositivo Pedagógico Transdisciplinar</p>
+        <p class="text-[10px] text-gold-300/60 mt-0.5">Universidad de Antioquia — Escuela Ambiental — Asignatura: Sociedad y Ambiente | Prof. Cathy Vieira</p>
+    </footer>
+
+    <!-- JAVASCRIPT APPLICATION LOGIC -->
+    <script>
+        // Full Academic Database of Cards matching 5-point structure
+        const DECK_DATA = {
+            tree: {
+                id: 'tree',
+                number: 'I',
+                title: 'THE TREE',
+                subtitle: 'Viejo Ciprés y la Niebla',
+                species: 'Cupressus lusitanica',
+                dimension: 'Temporalidad & Memoria',
+                icon: 'fa-tree',
+                question: '¿Qué temporalidades de la memoria y del paisaje estamos destruyendo al evaluar el territorio únicamente por su rendimiento a corto plazo?',
+                synthesis: 'El Árbol (Viejo Ciprés) impone la escala del tiempo profundo (más de 110 años). Nos advierte que acelerar el ritmo de intervención mediante obras o peajes rígidos interrumpe el ritmo natural de la montaña, fracturando la memoria acumulada y la pausa protectora que la niebla otorga al territorio de San Félix.'
+            },
+            mushroom: {
+                id: 'mushroom',
+                number: 'II',
+                title: 'THE MUSHROOM',
+                subtitle: 'Ectomicorriza del Robledal',
+                species: 'Cortinarius / Laccaria sp.',
+                dimension: 'Redes & Metabolismo',
+                icon: 'fa-disease',
+                question: '¿Qué redes invisibles y ciclos metabólicos de materia alteraremos aunque no aparezcan representados en los planos de la obra?',
+                synthesis: 'El Hongo (Ectomicorriza) revela la interdependencia subterránea. Recuerda que no existen "elementos aislados" en el terreno; alterar el flujo biológico o económico mediante barreras duras en la ladera desmantela las redes de apoyo mutuo que sostienen la vida comunitaria y vegetal.'
+            },
+            animal: {
+                id: 'animal',
+                number: 'III',
+                title: 'THE ANIMAL',
+                subtitle: 'El Barranquero (Soledad)',
+                species: 'Momotus aequatorialis',
+                dimension: 'Movilidad & Agencia',
+                icon: 'fa-dove',
+                question: '¿Qué corredores biológicos y trayectorias de vuelo desaparecen cuando asumimos que las únicas fronteras que importan son las del diseño humano?',
+                synthesis: 'El Animal (Barranquero) expone la miopía del diseño antropocéntrico. Enseña que las rutas de vuelo no reconocen peajes ni demarcaciones de concreto. Cercar o intervenir la vía interrumpe corredores biológicos y dinámicas de movimiento no humano esenciales.'
+            },
+            mystic: {
+                id: 'mystic',
+                number: 'IV',
+                title: 'THE MYSTIC',
+                subtitle: 'Lili — La Gata Mística',
+                species: 'Felis catus',
+                dimension: 'Ontología Plural & Intangibles',
+                icon: 'fa-cat',
+                question: '¿Qué intangibles culturales, afectivos o sagrados ignoramos al reducir una decisión territorial a un cálculo puramente técnico y cuantificable?',
+                synthesis: 'La Mística (Gato Lili) cuestiona el reduccionismo técnico y monetario. Desde la sensibilidad del hogar y la intuición, recuerda que imponer barreras cuantitativas (como peajes) ignora la cartografía afectiva, la relación espiritual y el arraigo cultural que los habitantes sostienen con la montaña.'
+            }
+        };
+
+        // Tab Switcher
+        function switchTab(tab) {
+            const viewDeck = document.getElementById('view-deck');
+            const viewOracle = document.getElementById('view-oracle');
+            const tabDeck = document.getElementById('tab-deck');
+            const tabOracle = document.getElementById('tab-oracle');
+
+            if (tab === 'deck') {
+                viewDeck.classList.remove('hidden');
+                viewOracle.classList.add('hidden');
+
+                tabDeck.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 bg-gold-500 text-magenta-950 font-bold shadow";
+                tabOracle.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 text-gold-300 hover:text-gold-400";
+            } else {
+                viewDeck.classList.add('hidden');
+                viewOracle.classList.remove('hidden');
+
+                tabOracle.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 bg-gold-500 text-magenta-950 font-bold shadow";
+                tabDeck.className = "px-3.5 py-1.5 rounded-lg text-xs sm:text-sm font-medium transition-all duration-200 text-gold-300 hover:text-gold-400";
+            }
+        }
+
+        // Toggle 3D Card Flip
+        function toggleCardFlip(cardId) {
+            const card = document.getElementById(cardId);
+            if (card) {
+                card.classList.toggle('flipped');
+            }
+        }
+
+        // Preset Setter
+        function setPreset(text) {
+            document.getElementById('dilemma-input').value = text;
+        }
+
+        // Theme Toggle (Dark Magenta vs Clean White Mode)
+        function toggleTheme() {
+            document.body.classList.toggle('light-mode');
+        }
+
+        // Perform Oracle Reading
+        function performOracleReading() {
+            const dilemmaText = document.getElementById('dilemma-input').value.trim();
+            if (!dilemmaText) {
+                alert('Por favor ingresa un dilema territorial o de ingeniería para consultar al oráculo.');
+                return;
+            }
+
+            const count = parseInt(document.getElementById('draw-count').value);
+            const keys = Object.keys(DECK_DATA);
+            
+            // Shuffle keys
+            const shuffled = keys.sort(() => 0.5 - Math.random());
+            const selectedKeys = shuffled.slice(0, count);
+
+            // Render Drawn Cards Cards
+            const container = document.getElementById('drawn-cards-container');
+            container.innerHTML = '';
+
+            selectedKeys.forEach(key => {
+                const card = DECK_DATA[key];
+                const cardEl = document.createElement('div');
+                cardEl.className = "bg-magenta-800 border-2 border-gold-500/80 rounded-xl p-3 text-center gold-border-glow shadow-md";
+                cardEl.innerHTML = `
+                    <div class="text-[10px] font-bold text-gold-400 font-cinzel mb-1">${card.number} — ${card.dimension}</div>
+                    <div class="w-full h-24 rounded-lg overflow-hidden border border-gold-500/40 my-1.5 bg-black/40 flex items-center justify-center text-gold-400">
+                        <i class="fa-solid ${card.icon} text-3xl"></i>
+                    </div>
+                    <h4 class="font-cinzel text-xs font-bold text-gold-400">${card.title}</h4>
+                    <p class="text-[10px] text-gold-300/80 italic font-serif">${card.subtitle}</p>
+                `;
+                container.appendChild(cardEl);
+            });
+
+            // Synthesize Response
+            const outputEl = document.getElementById('oracle-text-output');
+            
+            let htmlContent = `
+                <div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-xl font-sans text-xs">
+                    <strong class="text-gold-400 uppercase tracking-wider block font-cinzel mb-1">Dilema de Ingeniería Planteado:</strong>
+                    "${dilemmaText}"
+                </div>
+                <div class="space-y-3.5 pt-2">
+            `;
+
+            selectedKeys.forEach(key => {
+                const card = DECK_DATA[key];
+                htmlContent += `
+                    <div class="border-l-2 border-gold-500 pl-3.5 py-1">
+                        <h4 class="font-cinzel font-bold text-gold-400 text-xs sm:text-sm flex items-center gap-2">
+                            <i class="fa-solid ${card.icon}"></i> ${card.title} — ${card.dimension}
+                        </h4>
+                        <p class="text-xs text-gold-300/90 mt-1">${card.synthesis}</p>
+                        <div class="text-xs text-gold-400/90 italic mt-1.5 font-serif bg-magenta-950/60 p-2.5 rounded border border-gold-500/20">
+                            <strong>Pregunta del Maestro:</strong> "${card.question}"
+                        </div>
+                    </div>
+                `;
+            });
+
+            htmlContent += `
+                </div>
+                <div class="mt-4 pt-3 border-t border-gold-500/30 text-xs font-sans text-gold-300/90 leading-relaxed bg-magenta-800/40 p-3.5 rounded-xl border border-gold-500/20">
+                    <strong class="text-gold-400 block font-cinzel mb-1 text-sm">Dictamen Pedagógico para la Plenaria (Prof. Cathy Vieira):</strong>
+                    Al desplazar el foco antropocéntrico hacia estos seres más-que-humanos, el oráculo demuestra que la intervención no puede justificarse como un simple cálculo o recaudo. Exige integrar la escala temporal profunda del ciprés, la continuidad de la red micorrízica, los corredores aéreos del barranquero y el respeto ontológico por los valores intangibles expresados en la mirada afable de Lili la gata.
+                </div>
+            `;
+
+            outputEl.innerHTML = htmlContent;
+
+            // Show Results
+            document.getElementById('oracle-results').classList.remove('hidden');
+            document.getElementById('oracle-results').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Speech Synthesis Readout
+        function speakOracleReading() {
+            const output = document.getElementById('oracle-text-output');
+            if (!output) return;
+
+            const textToRead = output.innerText;
+            if (!textToRead) return;
+
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const utterance = new SpeechSynthesisUtterance(textToRead);
+                utterance.lang = 'es-ES';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+
+                const btn = document.getElementById('tts-button');
+                btn.innerHTML = `<i class="fa-solid fa-square text-red-400"></i> Detener Lectura`;
+                btn.onclick = () => {
+                    window.speechSynthesis.cancel();
+                    btn.innerHTML = `<i class="fa-solid fa-volume-high text-gold-400"></i> Escuchar Dictamen`;
+                    btn.onclick = speakOracleReading;
+                };
+            } else {
+                alert('Tu navegador no soporta sintetizador de voz (Web Speech API).');
+            }
+        }
+    </script>
+</body>
+</html>
