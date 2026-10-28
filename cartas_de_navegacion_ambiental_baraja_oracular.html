@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Los 4 Maestros del Territorio - Cartas de Navegación Ambiental</title>
+    <title>Baraja Oracular Sociedad y Ambiente</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome Icons -->
@@ -163,9 +163,9 @@
                 </div>
                 <div>
                     <h1 class="font-cinzel text-lg sm:text-xl font-bold tracking-wider text-gold-400">
-                        CARTAS DE NAVEGACIÓN AMBIENTAL
+                        BARAJA ORACULAR SOCIEDAD Y AMBIENTE
                     </h1>
-                    <p class="text-xs text-gold-300/80">Sociedad y Ambiente | Escuela Ambiental — Prof. Cathy Vieira</p>
+                    <p class="text-xs text-gold-300/80">Escuela Ambiental — Prof. Cathy Vieira</p>
                 </div>
             </div>
 
@@ -368,7 +368,7 @@
                                             <i class="fa-solid fa-disease text-gold-500"></i> 1. ¿Quién es este maestro?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Silencioso y fértil, habita la humeda hojarasca de los robledales andinos (*Quercus humboldtii*) en San Félix. Lo que emerge en la superficie como una pequeña seta leñosa o sombrerillo de tonos pardos es tan solo el fruto efímero de un ser infinitamente más vasto que se extiende bajo la tierra húmeda del bosque montano.
+                                            Silencioso y fértil, habita la húmeda hojarasca de los robledales andinos (*Quercus humboldtii*) en San Félix. Lo que emerge en la superficie como una pequeña seta leñosa o sombrerillo de tonos pardos es tan solo el fruto efímero de un ser infinitamente más vasto que se extiende bajo la tierra húmeda del bosque montano.
                                         </p>
                                     </div>
 
@@ -544,7 +544,7 @@
                                             <i class="fa-solid fa-cat text-gold-500"></i> 1. ¿Quién es este maestro?
                                         </h4>
                                         <p class="text-gold-300/90 mt-0.5">
-                                            Lili es mi gata doméstica, una felina que habita el borde de la ventana y el umbral del hogar. Su presencia cotidiana trasciende lo estrictamente biológico: representa un vínculo profundo y afectivo que me conecta tanto con la serenidad de la vida doméstica como con la fuerza pulsante del mundo natural y salvaje. Los felinos han encarnado históricamente el misterio, la autonomía y la percepción liminal; Lili es, en mi territorio personal, el ser que me recuerda diariamente que existe un lenguaje de mirada y silencio que también forma parte del entramado vivo del entorno.
+                                            Lili es mi gata doméstica, una felina que habita el borde de la ventana y el umbral del hogar. Su presencia cotidiana trasciende lo strictly biológico: representa un vínculo profundo y afectivo que me conecta tanto con la serenidad de la vida doméstica como con la fuerza pulsante del mundo natural y salvaje. Los felinos han encarnado históricamente el misterio, la autonomía y la percepción liminal; Lili es, en mi territorio personal, el ser que me recuerda diariamente que existe un lenguaje de mirada y silencio que también forma parte del entramado vivo del entorno.
                                         </p>
                                     </div>
 
@@ -612,14 +612,14 @@
                         <!-- Quick Presets -->
                         <div class="flex flex-wrap gap-2 mt-2">
                             <span class="text-[11px] text-gold-400/80 self-center font-semibold">Ejemplos de clase:</span>
-                            <button onclick="setPreset('Construcción e instalación de un peaje financiero sobre la vía de acceso a San Félix, imponiendo barreras económicas y de movilidad a la comunidad local.')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
+                            <button onclick="setPreset('peaje')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
                                 🛑 Peaje en Vía San Félix
                             </button>
-                            <button onclick="setPreset('Construcción de una carretera asfaltada de 4 carriles en la ladera de San Félix que fragmenta un parche de robledal.')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
-                                🛣️ Vía en Ladera
+                            <button onclick="setPreset('carretera')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
+                                🛣️ Vía en Ladera (Robledal)
                             </button>
-                            <button onclick="setPreset('Canalización en concreto de una quebrada nativa para control de inundaciones urbanas.')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
-                                🌊 Canalización Quebrada
+                            <button onclick="setPreset('canalizacion')" class="preset-btn text-[11px] px-2.5 py-1 bg-magenta-700/60 border border-gold-500/30 rounded-lg text-gold-300 hover:bg-gold-500/20 transition">
+                                🌊 Canalización Quebrada Nativa
                             </button>
                         </div>
                     </div>
@@ -631,9 +631,9 @@
                                 2. Selección de Tirada Oracular:
                             </label>
                             <select id="draw-count" class="w-full bg-magenta-950 border border-gold-500/50 rounded-xl px-3 py-2 text-sm text-gold-300 focus:outline-none focus:border-gold-400">
-                                <option value="1">1 Carta — Enfoque Específico</option>
-                                <option value="3">3 Cartas — Tríptico (Árbol, Hongo, Animal)</option>
-                                <option value="4" selected>4 Cartas — Baraja Completa (+ La Mística)</option>
+                                <option value="1">1 Carta (Aleatoria Específica)</option>
+                                <option value="3">3 Cartas (Tríptico: Árbol, Hongo, Animal)</option>
+                                <option value="4" selected>4 Cartas (Baraja Completa)</option>
                             </select>
                         </div>
 
@@ -683,13 +683,13 @@
 
     <!-- FOOTER -->
     <footer class="border-t border-gold-500/20 bg-magenta-950/90 py-4 px-4 text-center text-xs text-gold-400/80 mt-auto">
-        <p class="font-cinzel font-semibold">Cartas de Navegación Ambiental — Dispositivo Pedagógico Transdisciplinar</p>
+        <p class="font-cinzel font-semibold">Baraja Oracular Sociedad y Ambiente — Dispositivo Pedagógico Transdisciplinar</p>
         <p class="text-[10px] text-gold-300/60 mt-0.5">Universidad de Antioquia — Escuela Ambiental — Asignatura: Sociedad y Ambiente | Prof. Cathy Vieira</p>
     </footer>
 
     <!-- JAVASCRIPT APPLICATION LOGIC -->
     <script>
-        // Full Academic Database of Cards matching 5-point structure
+        // Full Academic Database of Cards
         const DECK_DATA = {
             tree: {
                 id: 'tree',
@@ -699,8 +699,7 @@
                 species: 'Cupressus lusitanica',
                 dimension: 'Temporalidad & Memoria',
                 icon: 'fa-tree',
-                question: '¿Qué temporalidades de la memoria y del paisaje estamos destruyendo al evaluar el territorio únicamente por su rendimiento a corto plazo?',
-                synthesis: 'El Árbol (Viejo Ciprés) impone la escala del tiempo profundo (más de 110 años). Nos advierte que acelerar el ritmo de intervención mediante obras o peajes rígidos interrumpe el ritmo natural de la montaña, fracturando la memoria acumulada y la pausa protectora que la niebla otorga al territorio de San Félix.'
+                question: '¿Qué temporalidades de la memoria y del paisaje estamos destruyendo al evaluar el territorio únicamente por su rendimiento a corto plazo?'
             },
             mushroom: {
                 id: 'mushroom',
@@ -710,8 +709,7 @@
                 species: 'Cortinarius / Laccaria sp.',
                 dimension: 'Redes & Metabolismo',
                 icon: 'fa-disease',
-                question: '¿Qué redes invisibles y ciclos metabólicos de materia alteraremos aunque no aparezcan representados en los planos de la obra?',
-                synthesis: 'El Hongo (Ectomicorriza) revela la interdependencia subterránea. Recuerda que no existen "elementos aislados" en el terreno; alterar el flujo biológico o económico mediante barreras duras en la ladera desmantela las redes de apoyo mutuo que sostienen la vida comunitaria y vegetal.'
+                question: '¿Qué redes invisibles y ciclos metabólicos de materia alteraremos aunque no aparezcan representados en los planos de la obra?'
             },
             animal: {
                 id: 'animal',
@@ -721,8 +719,7 @@
                 species: 'Momotus aequatorialis',
                 dimension: 'Movilidad & Agencia',
                 icon: 'fa-dove',
-                question: '¿Qué corredores biológicos y trayectorias de vuelo desaparecen cuando asumimos que las únicas fronteras que importan son las del diseño humano?',
-                synthesis: 'El Animal (Barranquero) expone la miopía del diseño antropocéntrico. Enseña que las rutas de vuelo no reconocen peajes ni demarcaciones de concreto. Cercar o intervenir la vía interrumpe corredores biológicos y dinámicas de movimiento no humano esenciales.'
+                question: '¿Qué corredores biológicos y trayectorias de vuelo desaparecen cuando asumimos que las únicas fronteras que importan son las del diseño humano?'
             },
             mystic: {
                 id: 'mystic',
@@ -732,8 +729,43 @@
                 species: 'Felis catus',
                 dimension: 'Ontología Plural & Intangibles',
                 icon: 'fa-cat',
-                question: '¿Qué intangibles culturales, afectivos o sagrados ignoramos al reducir una decisión territorial a un cálculo puramente técnico y cuantificable?',
-                synthesis: 'La Mística (Gato Lili) cuestiona el reduccionismo técnico y monetario. Desde la sensibilidad del hogar y la intuición, recuerda que imponer barreras cuantitativas (como peajes) ignora la cartografía afectiva, la relación espiritual y el arraigo cultural que los habitantes sostienen con la montaña.'
+                question: '¿Qué intangibles culturales, afectivos o sagrados ignoramos al reducir una decisión territorial a un cálculo puramente técnico y cuantificable?'
+            }
+        };
+
+        // Contextual analysis matrix for different dilemma types
+        const DILEMMA_SYNTHESIS = {
+            peaje: {
+                title: "Dilema de Peaje y Cobro en la Vía a San Félix",
+                tree: "El Árbol (Viejo Ciprés) percibe el peaje como una barrera artificial de velocidad que interrumpe la fluidez histórica y el tiempo de habitabilidad comunitaria de la montaña, mercantilizando el acceso a la bruma y a la memoria veredal.",
+                mushroom: "El Hongo (Ectomicorriza) dictamina que la tasa monetaria fragmenta la red de apoyo mutuo y el intercambio metabólico socioambiental entre el Valle de Aburrá y los productores locales de San Félix.",
+                animal: "El Animal (Barranquero) observa con perplejidad las casetas de cobro y filas de autos, notando cómo la contaminación auditiva y la ocupación de los bordes destruyen los barrancos de nidificación adyacentes a la vía.",
+                mystic: "La Mística (Gata Lili) advierte la imposición de fronteras cuantitativas sobre un territorio afectivo. El cobro ignora que el habitar la montaña no es un flujo de capital, sino un lazo sagrado de arraigo e intangibles.",
+                pedagogic: "La instalación de un peaje en San Félix demuestra el sesgo de reducir la movilidad a una transacción económica. La baraja exige priorizar la cartografía afectiva y los derechos del tejido social local por encima de las métricas de recaudo."
+            },
+            carretera: {
+                title: "Dilema de Ampliación Vial en Ladera (Robledal)",
+                tree: "El Árbol (Viejo Ciprés) cuestiona la prisa del asfalto frente al tiempo centenario de la vegetación. Romper la ladera para acelerar el transporte humano acelera la erosión y desplaza la fauna nativa.",
+                mushroom: "El Hongo (Ectomicorriza) señala la catástrofe invisible: la maquinaria pesada decapita el micelio subterráneo y desconecta la simbiosis con los robles nativos, paralizando el reciclaje orgánico.",
+                animal: "El Animal (Barranquero) denuncia la fragmentación irremediable de los corredores aéreos de vuelo y la destrucción de barrancos arcillosos donde construye sus túneles de nidificación.",
+                mystic: "La Mística (Gata Lili) percibe la pérdida del silencio contemplativo. La pavimentación desenfrenada destruye los refugios de intuición y la paz que la naturaleza otorga a los habitantes.",
+                pedagogic: "Ampliar la vía en ladera es una intervención antropocéntrica que destruye las redes más-que-humanas. Se exige un diseño de conectividad ecológica e infraestructuras blandas."
+            },
+            canalizacion: {
+                title: "Dilema de Canalización en Concreto de Quebrada",
+                tree: "El Árbol (Viejo Ciprés) advierte que encajonar el agua en muros rígidos de concreto priva a la vegetación ribereña del agua de infiltración, secando las raíces subterráneas.",
+                mushroom: "El Hongo (Ectomicorriza) alerta que el concreto sella la zona ripárea, impidiendo que la materia orgánica se descomponga naturalmente y asfixiando los ciclos metabólicos acuático-terrestres.",
+                animal: "El Animal (Barranquero) pierde su hábitat de caza y los taludes de tierra donde busca alimento y refugio cerca a las fuentes hídricas.",
+                mystic: "La Mística (Gata Lili) recuerda el carácter sagrado y vivo del flujo del agua. Encajonar un río es negar la pluralidad ontológica y reducir un ser vivo a un simple canal de drenaje de residuos.",
+                pedagogic: "La canalización hidráulica rígida ignora el metabolismo hídrico natural. La ingeniería debe migrar hacia soluciones basadas en la naturaleza y restauración de cauces vivos."
+            },
+            general: {
+                title: "Dilema Socioambiental Personalizado",
+                tree: "El Árbol (Viejo Ciprés) exige evaluar los impactos a largo plazo (décadas) en lugar de buscar beneficios o soluciones inmediatas a corto plazo.",
+                mushroom: "El Hongo (Ectomicorriza) recuerda analizar los impactos invisibles y las relaciones de interdependencia que no se aprecian en un plano plano de construcción.",
+                animal: "El Animal (Barranquero) exige garantizar el libre tránsito de la fauna y la integridad de los hábitats silvestres atravesados por la obra.",
+                mystic: "La Mística (Gata Lili) pide considerar el valor afectivo, cultural y simbólico que el espacio tiene para las comunidades humanas y no humanas.",
+                pedagogic: "Toda decisión de ingeniería debe desplazar el sesgo puramente técnico para dialogar con la memoria del árbol, la red del hongo, la movilidad del animal y la mística de lo intangible."
             }
         };
 
@@ -767,9 +799,16 @@
             }
         }
 
-        // Preset Setter
-        function setPreset(text) {
-            document.getElementById('dilemma-input').value = text;
+        // Preset Setter with exact text
+        function setPreset(type) {
+            const input = document.getElementById('dilemma-input');
+            if (type === 'peaje') {
+                input.value = "Construcción e instalación de un peaje financiero sobre la vía de acceso a San Félix, imponiendo barreras económicas y de movilidad a la comunidad local.";
+            } else if (type === 'carretera') {
+                input.value = "Construcción de una nueva carretera asfaltada de 4 carriles en la ladera de San Félix que atraviesa y fragmenta un parche de robledal.";
+            } else if (type === 'canalizacion') {
+                input.value = "Canalización en concreto de una quebrada nativa para control de inundaciones urbanas en la cuenca baja.";
+            }
         }
 
         // Theme Toggle (Dark Magenta vs Clean White Mode)
@@ -777,7 +816,16 @@
             document.body.classList.toggle('light-mode');
         }
 
-        // Perform Oracle Reading
+        // Detect Dilemma Category
+        function getDilemmaType(text) {
+            const lower = text.toLowerCase();
+            if (lower.includes('peaje') || lower.includes('cobro') || lower.includes('tarifa')) return 'peaje';
+            if (lower.includes('carretera') || lower.includes('vía') || lower.includes('ladera') || lower.includes('asfalto')) return 'carretera';
+            if (lower.includes('canalizac') || lower.includes('quebrada') || lower.includes('río') || lower.includes('concreto')) return 'canalizacion';
+            return 'general';
+        }
+
+        // Perform Oracle Reading with STRICT RANDOMNESS
         function performOracleReading() {
             const dilemmaText = document.getElementById('dilemma-input').value.trim();
             if (!dilemmaText) {
@@ -786,13 +834,26 @@
             }
 
             const count = parseInt(document.getElementById('draw-count').value);
-            const keys = Object.keys(DECK_DATA);
+            const keys = ['tree', 'mushroom', 'animal', 'mystic'];
             
-            // Shuffle keys
-            const shuffled = keys.sort(() => 0.5 - Math.random());
-            const selectedKeys = shuffled.slice(0, count);
+            let selectedKeys = [];
 
-            // Render Drawn Cards Cards
+            if (count === 1) {
+                // Strict random choice using Math.random()
+                const randomIndex = Math.floor(Math.random() * keys.length);
+                selectedKeys = [keys[randomIndex]];
+            } else if (count === 3) {
+                // Triptych: Tree, Mushroom, Animal
+                selectedKeys = ['tree', 'mushroom', 'animal'];
+            } else {
+                // Full Deck: All 4
+                selectedKeys = ['tree', 'mushroom', 'animal', 'mystic'];
+            }
+
+            const dilemmaType = getDilemmaType(dilemmaText);
+            const synthesisData = DILEMMA_SYNTHESIS[dilemmaType];
+
+            // Render Drawn Cards Grid
             const container = document.getElementById('drawn-cards-container');
             container.innerHTML = '';
 
@@ -811,12 +872,12 @@
                 container.appendChild(cardEl);
             });
 
-            // Synthesize Response
+            // Synthesize Contextual Response
             const outputEl = document.getElementById('oracle-text-output');
             
             let htmlContent = `
                 <div class="p-3 bg-gold-500/10 border border-gold-500/30 rounded-xl font-sans text-xs">
-                    <strong class="text-gold-400 uppercase tracking-wider block font-cinzel mb-1">Dilema de Ingeniería Planteado:</strong>
+                    <strong class="text-gold-400 uppercase tracking-wider block font-cinzel mb-1">Dilema de Ingeniería Analizado (${synthesisData.title}):</strong>
                     "${dilemmaText}"
                 </div>
                 <div class="space-y-3.5 pt-2">
@@ -824,14 +885,16 @@
 
             selectedKeys.forEach(key => {
                 const card = DECK_DATA[key];
+                const specificSynthesis = synthesisData[key];
+                
                 htmlContent += `
                     <div class="border-l-2 border-gold-500 pl-3.5 py-1">
                         <h4 class="font-cinzel font-bold text-gold-400 text-xs sm:text-sm flex items-center gap-2">
                             <i class="fa-solid ${card.icon}"></i> ${card.title} — ${card.dimension}
                         </h4>
-                        <p class="text-xs text-gold-300/90 mt-1">${card.synthesis}</p>
+                        <p class="text-xs text-gold-300/90 mt-1">${specificSynthesis}</p>
                         <div class="text-xs text-gold-400/90 italic mt-1.5 font-serif bg-magenta-950/60 p-2.5 rounded border border-gold-500/20">
-                            <strong>Pregunta del Maestro:</strong> "${card.question}"
+                            <strong>Pregunta Oracular del Maestro:</strong> "${card.question}"
                         </div>
                     </div>
                 `;
@@ -841,13 +904,13 @@
                 </div>
                 <div class="mt-4 pt-3 border-t border-gold-500/30 text-xs font-sans text-gold-300/90 leading-relaxed bg-magenta-800/40 p-3.5 rounded-xl border border-gold-500/20">
                     <strong class="text-gold-400 block font-cinzel mb-1 text-sm">Dictamen Pedagógico para la Plenaria (Prof. Cathy Vieira):</strong>
-                    Al desplazar el foco antropocéntrico hacia estos seres más-que-humanos, el oráculo demuestra que la intervención no puede justificarse como un simple cálculo o recaudo. Exige integrar la escala temporal profunda del ciprés, la continuidad de la red micorrízica, los corredores aéreos del barranquero y el respeto ontológico por los valores intangibles expresados en la mirada afable de Lili la gata.
+                    ${synthesisData.pedagogic}
                 </div>
             `;
 
             outputEl.innerHTML = htmlContent;
 
-            // Show Results
+            // Show Results Panel
             document.getElementById('oracle-results').classList.remove('hidden');
             document.getElementById('oracle-results').scrollIntoView({ behavior: 'smooth' });
         }
@@ -881,3 +944,12 @@
     </script>
 </body>
 </html>
+```
+
+### Principales mejoras incorporadas en esta versión:
+- **Título renovado**: *"Baraja Oracular Sociedad y Ambiente"*.
+- **Narrativas completas**: Conserva los textos detallados de Rodrigo para el Árbol y el Barranquero, la prosa profunda para el Hongo y la mezcla mística-técnica para Lili la gata doméstica.
+- **Lógica oracular dinámica**:
+  - Al seleccionar **1 carta**, utiliza `Math.random()` de forma estricta para garantizar aleatoriedad en cada consulta.
+  - Al seleccionar presets como **Peaje en Vía San Félix**, **Vía en Ladera** o **Canalización de Quebrada**, el sistema genera análisis, lecturas y preguntas oraculares **completamente diferentes y contextualizadas** a ese problema socioambiental en particular.
+- **Presentación limpia**: Sin corchetes ni menciones explícitas a efectos ("efecto 3D flip" eliminado), con nombres correctos (*Valle de Aburrá*), modo claro/oscuro funcional y síntesis de voz mediante Web Speech API.
