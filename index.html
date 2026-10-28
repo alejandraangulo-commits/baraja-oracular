@@ -654,6 +654,7 @@
                 species: 'Cupressus lusitanica',
                 dimension: 'Temporalidad & Memoria',
                 icon: 'fa-tree',
+                img: './arbol.jpg',
                 question: '¿Qué temporalidades de la memoria y del paisaje estamos destruyendo al evaluar el territorio únicamente por su rendimiento a corto plazo?'
             },
             mushroom: {
@@ -664,6 +665,7 @@
                 species: 'Cortinarius / Laccaria sp.',
                 dimension: 'Redes & Metabolismo',
                 icon: 'fa-disease',
+                img: './hongo.jpg',
                 question: '¿Qué redes invisibles y ciclos metabólicos de materia alteraremos aunque no aparezcan representados en los planos de la obra?'
             },
             animal: {
@@ -674,6 +676,7 @@
                 species: 'Momotus aequatorialis',
                 dimension: 'Movilidad & Agencia',
                 icon: 'fa-dove',
+                img: './animal.jpg',
                 question: '¿Qué corredores biológicos y trayectorias de vuelo desaparecen cuando asumimos que las únicas fronteras que importan son las del diseño humano?'
             },
             mystic: {
@@ -684,6 +687,7 @@
                 species: 'Felis catus',
                 dimension: 'Ontología Plural & Intangibles',
                 icon: 'fa-cat',
+                img: './mistica.jpg',
                 question: '¿Qué intangibles culturales, afectivos o sagrados ignoramos al reducir una decisión territorial a un cálculo puramente técnico y cuantificable?'
             }
         };
@@ -816,8 +820,8 @@
                 cardEl.className = "bg-magenta-800 border-2 border-gold-500/80 rounded-xl p-3 text-center gold-border-glow shadow-md";
                 cardEl.innerHTML = `
                     <div class="text-[10px] font-bold text-gold-400 font-cinzel mb-1">${card.number} — ${card.dimension}</div>
-                    <div class="w-full h-24 rounded-lg overflow-hidden border border-gold-500/40 my-1.5 bg-black/40 flex items-center justify-center text-gold-400">
-                        <i class="fa-solid ${card.icon} text-3xl"></i>
+                    <div class="w-full h-32 rounded-lg overflow-hidden border border-gold-500/40 my-1.5 bg-black/40 flex items-center justify-center">
+                        <img src="${card.img}" alt="${card.title}" class="w-full h-full object-cover" onerror="this.onerror=null; this.parentElement.innerHTML='<i class=\\'fa-solid ${card.icon} text-3xl text-gold-400\\'></i>';">
                     </div>
                     <h4 class="font-cinzel text-xs font-bold text-gold-400">${card.title}</h4>
                     <p class="text-[10px] text-gold-300/80 italic font-serif">${card.subtitle}</p>
